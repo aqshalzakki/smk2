@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 60px;">
     <div class="row">
-        <div class="col-md-12">
-
+        <div class="col-md-8">
+        <h1 class="mb-2">Profile saya</h1>
         <?= $this->session->flashdata('message'); ?>
 
             <div class="card my-4">
