@@ -1,6 +1,7 @@
 <div class="container ml-4 mb-5" style="margin-top: 60px;">
     <div class="row">
         <div class="col-md-6">
+            <h1 class="mb-3">Edit Profile</h1>
             <form action="<?= base_url('pegawai/edit_profile'); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nama">Nama</label>
@@ -21,6 +22,7 @@
                     <div class="custom-file my-2">
                         <input type="file" class="custom-file-input input-gambar-pegawai" name="gambar" id="customFile" style="cursor: pointer !important;">
                         <label class="custom-file-label" for="customFile">Choose file</label>
+                        <?= $this->session->flashdata('message'); ?>
                     </div>
                 </div>
 
