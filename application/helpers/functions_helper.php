@@ -94,4 +94,10 @@
 
     }
 
+    function tampil_error_gambar($prefix = false, $suffix = false)
+    {
+        $ci = get_instance();
+
+        return $ci->upload->display_errors($prefix, $suffix);
+    }
 ?>
