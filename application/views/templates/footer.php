@@ -1,3 +1,4 @@
+
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -31,8 +32,8 @@
             </button>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+            <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Keluar</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">batal</button>
           </div>
         </div>
       </div>
