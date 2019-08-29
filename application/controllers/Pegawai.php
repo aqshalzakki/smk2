@@ -64,10 +64,6 @@ class Pegawai extends CI_Controller {
 		$data['user'] = $this->db->get_where('pegawai', ['id_pegawai' => $this->session->userdata('user')['id_pegawai']])->row_array();
 
 		$this->form_validation->set_rules('nama', 'Nama', 'required', ['required' => 'Nama tidak boleh kosong']);
-		$this->form_validation->set_rules('nip', 'NIP', 'required|is_numeric', [
-			'required' => 'NIP tidak boleh kosong',
-			'is_numeric' => 'NIP harus berisi angka'
-		]);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', ['required' => 'Alamat tidak boleh kosong']);
 
 		if($this->form_validation->run() == false)

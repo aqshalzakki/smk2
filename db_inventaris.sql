@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2019 at 09:18 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Aug 29, 2019 at 12:38 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_inventaris`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `nama_admin` varchar(128) NOT NULL,
+  `alamat` varchar(128) NOT NULL,
+  `id_level` int(11) NOT NULL,
+  `gambar` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `alamat`, `id_level`, `gambar`) VALUES
+(2019080200, 'adityarachman_', 'aditya123', 'Hayyooo', 'Jl.Cicadas', 1, 'Koala.jpg');
 
 -- --------------------------------------------------------
 
@@ -108,7 +131,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `nip`, `alamat`, `gambar`, `id_level`) VALUES
-(1, 'Ihsan ', 'Shw12@sch.id', '123', '928128326', 'Jl. Sentot sukajadi', '11.PNG', 3);
+(1, 'Maysomething2', 'Shw12@sch.id', '123', '928128326', 'Jl. Sentot sukajadi gan', 'Lighthouse.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -124,27 +147,6 @@ CREATE TABLE `peminjaman` (
   `status_peminjaman` varchar(128) NOT NULL,
   `id_pegawai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `petugas`
---
-
-CREATE TABLE `petugas` (
-  `id_petugas` int(11) NOT NULL,
-  `username` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `nama_petugas` varchar(128) NOT NULL,
-  `id_level` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `petugas`
---
-
-INSERT INTO `petugas` (`id_petugas`, `username`, `password`, `nama_petugas`, `id_level`) VALUES
-(2019080200, 'adityarachman_', 'aditya123', 'Ihsan', 1);
 
 -- --------------------------------------------------------
 
@@ -165,18 +167,6 @@ CREATE TABLE `ruang` (
 
 INSERT INTO `ruang` (`id_ruang`, `nama_ruang`, `kode_ruang`, `keterangan`) VALUES
 (2019080000, 'Ruang Rapat', '0801', 'Untuk Kepentingan Kantor dan Rapat para staf');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `temporary_image`
---
-
-CREATE TABLE `temporary_image` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `gambar` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -247,11 +237,16 @@ INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
 -- Indexes for table `detail_peminjam`
 --
 ALTER TABLE `detail_peminjam`
-  ADD PRIMARY KEY (`id_detail_pinjam`),
-  ADD UNIQUE KEY `id_inventaris` (`id_inventaris`);
+  ADD PRIMARY KEY (`id_detail_pinjam`);
 
 --
 -- Indexes for table `inventaris`
@@ -285,23 +280,10 @@ ALTER TABLE `peminjaman`
   ADD UNIQUE KEY `id_pegawai` (`id_pegawai`);
 
 --
--- Indexes for table `petugas`
---
-ALTER TABLE `petugas`
-  ADD PRIMARY KEY (`id_petugas`),
-  ADD UNIQUE KEY `id_level` (`id_level`);
-
---
 -- Indexes for table `ruang`
 --
 ALTER TABLE `ruang`
   ADD PRIMARY KEY (`id_ruang`);
-
---
--- Indexes for table `temporary_image`
---
-ALTER TABLE `temporary_image`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_access_menu`
@@ -324,6 +306,12 @@ ALTER TABLE `user_submenu`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080201;
 
 --
 -- AUTO_INCREMENT for table `detail_peminjam`
@@ -362,22 +350,10 @@ ALTER TABLE `peminjaman`
   MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `petugas`
---
-ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080202;
-
---
 -- AUTO_INCREMENT for table `ruang`
 --
 ALTER TABLE `ruang`
   MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080001;
-
---
--- AUTO_INCREMENT for table `temporary_image`
---
-ALTER TABLE `temporary_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`

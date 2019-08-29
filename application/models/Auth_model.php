@@ -37,18 +37,18 @@ class Auth_model extends CI_Model
         else
         {
 
-            $data_petugas = $this->db->get_where('petugas', ['username' => $username])->row_array();
+            $data_admin = $this->db->get_where('admin', ['username' => $username])->row_array();
 
-            if($data_petugas)
+            if($data_admin)
             {
-                if ($password == $data_petugas['password']) 
+                if ($password == $data_admin['password']) 
                 {
                     
                     $data = [
-                        'id_petugas' => $data_petugas['id_petugas'],
-                        'id_level' => $data_petugas['id_level'],
-                        'nama_level' => $this->db->get_where('level', ['id_level' => $data_petugas['id_level']])->row_array()['nama_level'],
-                        'nama' => $data_petugas['nama_petugas']
+                        'id_admin' => $data_admin['id_admin'],
+                        'id_level' => $data_admin['id_level'],
+                        'nama_level' => $this->db->get_where('level', ['id_level' => $data_admin['id_level']])->row_array()['nama_level'],
+                        'nama' => $data_admin['nama_admin']
                     ];
                     
                     $this->session->set_userdata('user', $data);
