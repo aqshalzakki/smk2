@@ -1,4 +1,4 @@
-<div class="container ml-4 mb-5" style="margin-top: 60px;">
+<div class="container ml-4 mb-5">
     <div class="row">
         <div class="col-md-6">
             <h1 class="mb-4">Edit Profile</h1>

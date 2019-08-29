@@ -7,16 +7,16 @@
 			<li class="breadcrumb-item">
 				<a href="<?= base_url(''); ?>"> Home </a>
                 <span>/</span>
-                <span> Inventaris </span>
-                <span>/</span>
-                <span> Barang</span>
+                <a href="<?= base_url('admin/inventaris'); ?>">
+                    <span> Inventaris </span>
+                </a>
 			</li>
 		</ol>
 
 		<!-- Content -->
 
 		<h1>
-			Inventaris : Barang
+			Data inventaris : 
 		</h1>
 
 		<div>
@@ -31,14 +31,14 @@
                 <?php 
 
                     $no = 1;
-                    foreach ($data_barang as $dt) : 
+                    foreach ($inventaris as $barang) : 
                 ?>
 
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= $dt->username; ?></td>
-                        <td><?= $dt->nama_petugas; ?></td>
-                        <td><?= $dt->id_level; ?></td>
+                        <td><?= $barang['username']; ?></td>
+                        <td><?= $barang['nama_petugas']; ?></td>
+                        <td><?= $barang['id_level']; ?></td>
                         <td>
                             <div class="btn-group">
                                 <a href="#" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">

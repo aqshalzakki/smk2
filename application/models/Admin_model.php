@@ -6,7 +6,7 @@ class Admin_model extends CI_Model
     public function getBarang()
     {
         $query =  $this->db->order_by('id_inventaris','DESC')->get('inventaris');
-        return $query->result();
+        return $query->result_array();
     }
     
     public function getRuang()

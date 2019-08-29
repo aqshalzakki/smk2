@@ -5,7 +5,7 @@
   <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-fw fa-school"></i>
       </div>
@@ -70,7 +70,7 @@
 
     <!-- LOGOUT -->
     <li class="nav-item">
-      <a data-toggle="modal" data-target="#logoutModal" class="nav-link pt-1" href="">
+      <a data-toggle="modal" data-target="#logoutModal" class="nav-link pt-1" href="<?= base_url('auth/logout'); ?>">
         <i class="fas fa-fw fa-sign-out-alt"></i>
         <span>Logout</span></a>
     </li>

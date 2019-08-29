@@ -80,17 +80,18 @@ class Admin extends CI_Controller {
 	}
 
 
-	public function data_barang()
+	public function inventaris()
 	{
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);		
 
-		$data['judul'] = 'Data Barang';
-		$data['data_barang'] = $this->admin->getBarang();
+		$data['judul'] = 'Inventaris';
+		$data['inventaris'] = $this->admin->getBarang();
 		
 		view([
 			'templates/header',
 			'templates/sidebar',
 			'templates/topbar',
-			'smk2/barang',
+			'smk2/inventaris',
 			'templates/footer'
 		], $data);
 

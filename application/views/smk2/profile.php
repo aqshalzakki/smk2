@@ -1,5 +1,5 @@
 
-<div class="container" style="margin-top: 60px;">
+<div class="container">
     <div class="row">
         <div class="col-md-8">
         <h1 class="mb-2">Profile saya</h1>
