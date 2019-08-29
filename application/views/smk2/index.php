@@ -7,6 +7,7 @@
 			<li class="breadcrumb-item">
 				<a href="<?= base_url(''); ?>"> Home </a>
 					<span>/</span>
+				<a href="<?= base_url(''); ?>"> Dashboard </a>
 			</li>
 		</ol>
 

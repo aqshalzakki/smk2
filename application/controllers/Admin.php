@@ -24,7 +24,7 @@ class Admin extends CI_Controller {
 
 		}
 		
-		$data['judul'] = 'Inventaris - SMKN 2 BDG';
+		$data['judul'] = 'Dashboard';
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
 
 		$data['nama_user'] = $data['user']['nama_admin'];

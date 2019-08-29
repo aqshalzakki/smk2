@@ -100,4 +100,15 @@
 
         return $ci->upload->display_errors($prefix, $suffix);
     }
+
+    function url_home($id_level)
+    {
+        if ($id_level == 1)
+        {
+            return base_url();
+        }
+        return base_url('pegawai');
+    }
+
+
 ?>
