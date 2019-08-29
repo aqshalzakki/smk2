@@ -34,12 +34,12 @@ class Pegawai_model extends CI_Model
                 $gambar_lama = $this->get_pegawai_by_nip($data['nip'])['gambar'];
                 
                 // jika gambar lamanya bukan gambar default 
-                if ($gambar_lama != 'default.jpg')
+                if ($gambar_lama != 'default.png')
                 {
                     // hapus gambar sebelumnya kecuali gambar default
                     unlink(FCPATH . 'vendor/img/' . $gambar_lama);
                 }
-
+                
                 $this->db->set('gambar', $nama_gambar);
             }else{
 
