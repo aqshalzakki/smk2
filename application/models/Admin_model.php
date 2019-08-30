@@ -5,13 +5,17 @@ class Admin_model extends CI_Model
 {
     public function getBarang()
     {
-        $query =  $this->db->order_by('id_inventaris','DESC')->get('inventaris');
-        return $query->result_array();
+        return $this->db->order_by('id_inventaris','DESC')->get('inventaris')->result_array();
     }
     
-    public function getRuang()
+    public function getDetailBarang($kode)
     {
-        return $this->db->order_by('id_ruang','DESC')->get('ruang')->result();
+        return $this->db->get_where('inventaris', ['kode_inventaris' => $kode])->row_array();
+    }
+
+    public function getJenisById($id_jenis)
+    {
+        return $this->db->get_where('jenis', ['id_jenis' => $id_jenis])->row_array();
     }
 
     public function getAdminById()

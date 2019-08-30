@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2019 at 06:27 PM
+-- Generation Time: Aug 30, 2019 at 08:08 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -72,8 +72,15 @@ CREATE TABLE `inventaris` (
   `id_jenis` int(11) NOT NULL,
   `tanggal_register` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL,
-  `id_petugas` int(11) NOT NULL
+  `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inventaris`
+--
+
+INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
+(1, 'Spidol snowman', 'Baik', 'Spidol snowman yang permanen', 100, 1, 1567182853, 1000001, 2019080200);
 
 -- --------------------------------------------------------
 
@@ -83,10 +90,16 @@ CREATE TABLE `inventaris` (
 
 CREATE TABLE `jenis` (
   `id_jenis` int(11) NOT NULL,
-  `nama_jenis` int(128) NOT NULL,
-  `kode_jenis` int(128) NOT NULL,
-  `keterangan` int(255) NOT NULL
+  `nama_jenis` varchar(128) NOT NULL,
+  `kode_jenis` int(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis`
+--
+
+INSERT INTO `jenis` (`id_jenis`, `nama_jenis`, `kode_jenis`) VALUES
+(1, 'Spidol', 10029384);
 
 -- --------------------------------------------------------
 
@@ -298,13 +311,13 @@ ALTER TABLE `detail_peminjam`
 -- AUTO_INCREMENT for table `inventaris`
 --
 ALTER TABLE `inventaris`
-  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `jenis`
 --
 ALTER TABLE `jenis`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `level`

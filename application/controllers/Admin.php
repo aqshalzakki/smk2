@@ -34,7 +34,7 @@ class Admin extends CI_Controller {
 	{
 		admin_logged_in();
 
-		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);		
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
 
 		$data['judul'] = 'Inventaris';
 		$data['inventaris'] = $this->admin->getBarang();
@@ -48,6 +48,35 @@ class Admin extends CI_Controller {
 		], $data);
 		
 	}
+	
+	// METHOD DETAIL BARANG
+	public function detail_barang($kode_inventaris = null, $id_jenis = null)
+	{
+		if (!$kode_inventaris OR !$id_jenis OR !$this->db->get_where('inventaris', ['kode_inventaris' => $kode_inventaris]) OR !$this->db->get_where('jenis', ['id_jenis' => $id_jenis])){
+			redirect('admin/inventaris');
+		}
+
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
+		$data['judul'] = 'Detail barang';
+		$data['barang'] = $this->admin->getDetailBarang($kode_inventaris);
+		$data['jenis'] = $this->admin->getJenisById($id_jenis);
+
+		view([
+			'templates/header',
+			'templates/sidebar',
+			'templates/topbar',
+			'smk2/detail-barang',
+			'templates/footer'
+		], $data);
+		
+	}
+
+	// METHOD EDIT BARANG
+	
+	
+	
+	// METHOD HAPUS BARANG
+
 
 	// METHOD PEMINJAMAN BARANG
 
