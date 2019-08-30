@@ -109,7 +109,7 @@ class Admin extends CI_Controller {
 
 	public function profile()
 	{
-
+		admin_logged_in();
 		$data['judul'] = 'Profile';
 
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
@@ -125,6 +125,7 @@ class Admin extends CI_Controller {
 
 	public function edit_profile()
 	{
+		admin_logged_in();
 		$data['judul'] = 'Edit Profile';
 
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);

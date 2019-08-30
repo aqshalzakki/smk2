@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2019 at 05:01 PM
+-- Generation Time: Aug 30, 2019 at 06:27 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -68,10 +68,9 @@ CREATE TABLE `inventaris` (
   `nama` varchar(128) NOT NULL,
   `kondisi` varchar(128) NOT NULL,
   `keterangan` varchar(256) NOT NULL,
-  `jumlah` varchar(128) NOT NULL,
+  `jumlah` int(128) NOT NULL,
   `id_jenis` int(11) NOT NULL,
-  `tanggal_register` date NOT NULL,
-  `id_ruang` int(11) NOT NULL,
+  `tanggal_register` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL,
   `id_petugas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -147,26 +146,6 @@ CREATE TABLE `peminjaman` (
   `status_peminjaman` varchar(128) NOT NULL,
   `id_pegawai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ruang`
---
-
-CREATE TABLE `ruang` (
-  `id_ruang` int(11) NOT NULL,
-  `nama_ruang` varchar(128) NOT NULL,
-  `kode_ruang` varchar(128) NOT NULL,
-  `keterangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ruang`
---
-
-INSERT INTO `ruang` (`id_ruang`, `nama_ruang`, `kode_ruang`, `keterangan`) VALUES
-(2019080000, 'Ruang Rapat', '0801', 'Untuk Kepentingan Kantor dan Rapat para staf');
 
 -- --------------------------------------------------------
 
@@ -282,12 +261,6 @@ ALTER TABLE `peminjaman`
   ADD UNIQUE KEY `id_pegawai` (`id_pegawai`);
 
 --
--- Indexes for table `ruang`
---
-ALTER TABLE `ruang`
-  ADD PRIMARY KEY (`id_ruang`);
-
---
 -- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
@@ -350,12 +323,6 @@ ALTER TABLE `pegawai`
 --
 ALTER TABLE `peminjaman`
   MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `ruang`
---
-ALTER TABLE `ruang`
-  MODIFY `id_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080001;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
