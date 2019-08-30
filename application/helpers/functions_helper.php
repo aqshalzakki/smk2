@@ -97,10 +97,10 @@
     function tampil_error_gambar($prefix = false, $suffix = false)
     {
         $ci = get_instance();
-
+        
         return $ci->upload->display_errors($prefix, $suffix);
     }
-
+    
     function url_home($id_level)
     {
         if ($id_level == 1)
@@ -109,6 +109,32 @@
         }
         return base_url('pegawai');
     }
+    
+    function admin_logged_in()
+    {
+        $ci = get_instance();
+        
+        if (!$ci->session->userdata('user')) {
+            redirect('auth');
+        }
+        
+        if ($ci->session->userdata('user')['id_level'] != 1) {
+            
+            redirect('Forbidden');
+        }
+    }
+    
+    function pegawai_logged_in()
+    {
+        $ci = get_instance();
 
+        if (!$ci->session->userdata('user')) {
+            redirect('auth');
+        }
 
+        if ($ci->session->userdata('user')['id_level'] != 3) {
+
+            redirect('Forbidden');
+        }
+    }
 ?>

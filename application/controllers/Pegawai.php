@@ -13,16 +13,7 @@ class Pegawai extends CI_Controller {
 
 	public function index()
 	{
-		if (!$this->session->userdata('user')) {
-			redirect('auth');
-        }
-
-        if($this->session->userdata('user')['id_level'] != 3)
-        {
-
-            redirect('Forbidden');
-
-        }
+		pegawai_logged_in();
 
 		$data['judul'] = 'Pegawai - SMKN 2 BDG';
 
@@ -34,7 +25,7 @@ class Pegawai extends CI_Controller {
 			'templates/header',
 			'templates/sidebar',
 			'templates/topbar',
-			'smk2/index',
+			'smk2/profile',
 			'templates/footer'
 		], $data);
 
@@ -42,6 +33,7 @@ class Pegawai extends CI_Controller {
 
 	public function profile()
 	{
+		pegawai_logged_in();
 
 		$data['judul'] = 'Profile';
 
@@ -59,6 +51,8 @@ class Pegawai extends CI_Controller {
 
 	public function edit_profile()
 	{
+		pegawai_logged_in();
+		
 		$data['judul'] = 'Edit Profile';
 
 		$data['user'] = $this->db->get_where('pegawai', ['id_pegawai' => $this->session->userdata('user')['id_pegawai']])->row_array();
@@ -86,4 +80,25 @@ class Pegawai extends CI_Controller {
 		}
 
 	}
+
+	// METHOD PEMINJAMAN BARANG
+	
+	public function peminjaman()
+	{
+		pegawai_logged_in();
+
+		$data['user'] = $this->db->get_where('pegawai', ['id_pegawai', $this->session->userdata('user')['id_pegawai']])->row_array();
+
+		$data['judul'] = 'Peminjaman Barang';
+		view([
+			'templates/header',
+			'templates/sidebar',
+			'templates/topbar',
+			'smk2/peminjaman',
+			'templates/footer'
+		], $data);
+	}
+	
+	
+	// -----------------
 }
