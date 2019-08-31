@@ -41,6 +41,7 @@ $(document).ready(function(){
 				              <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
 				              <li class="list-group-item">Kode Barang : ` + result.kode_inventaris + `</li>
 				              <li class="list-group-item">Nama Barang : ` + barang.nama + `</li>
+				              <li class="list-group-item">Jumlah Barang : ` + result.jumlah + `</li>
 				              <li class="list-group-item">Tanggal Pinjam : ` + result.tanggal_pinjam + `</li>
 				              <li class="list-group-item">Tanggal Kembali : ` + result.tanggal_kembali + `</li>
 				              <li class="list-group-item">Status : 
