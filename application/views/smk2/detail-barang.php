@@ -17,18 +17,21 @@
     </ol>
 
     <!-- Content -->
-    <h2 class="my-4">Detail untuk barang : <?= $barang['nama']; ?></h2>
+    <h2 class="my-4">Detail barang</h2>
 
     <div class="row">
-        <div class="col-md-7">
-            <div class="card" style="width: 18rem;">
+        <div class="col-sm-10 col-lg-6 col-md-8">
+            <div class="card">
                 <div class="card-header">
-                    <?= $jenis['nama_jenis']; ?>
+                    Jenis barang : <b><?= $jenis['nama_jenis']; ?> </b>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Nama barang : <b><?= $barang['nama']; ?></b></li>
+                    <li class="list-group-item">Kode Inventaris : <b><?= $barang['kode_inventaris']; ?></b></li>
+                    <li class="list-group-item">Kondisi : <b><?= $barang['kondisi']; ?></b></li>
+                    <li class="list-group-item">Jumlah : <b><?= $barang['jumlah']; ?> pcs</b></li>
+                    <li class="list-group-item">Keterangan : <b><?= $barang['keterangan']; ?></b></li>
+                    <li class="list-group-item">Tanggal Register: <b><?= date('d F Y', $barang['tanggal_register'] ); ?></b></li>
                 </ul>
             </div>
         </div>
