@@ -18,6 +18,15 @@
         Data inventaris :
     </h1>
 
+    <div class="btn pull-right">
+        <a data-toggle="modal" data-target="#tambahModal" class="btn btn-primary" href="#" class="btn btn-primary right">
+            <span>
+                <i class="fas fa-plus"> </i>
+                Tambah Data
+            </span>
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-md-9">
             <table id="td_barang" class="table table-hover table-striped table-bordered text-center">
@@ -35,9 +44,21 @@
                         <td><?= $barang['nama']; ?></td>
                         <td><?= $barang['jumlah']; ?></td>
                         <td>
-                            <a href="<?= base_url('admin/detail_barang/' . $barang['kode_inventaris']) . '/' . $barang['id_jenis']; ?>" class="badge badge-primary">Detail</a>
-                            <a href="<?= base_url('admin/edit_barang/' . $barang['kode_inventaris']); ?>" class="badge badge-success">Edit</a>
-                            <a href="<?= base_url('admin/hapus_barang/' . $barang['kode_inventaris']); ?>" class="badge badge-danger">Hapus</a>
+                            <div class="btn-group">
+                                <a href="<?= base_url('admin/detail_barang/' . $barang['kode_inventaris']) . '/' . $barang['id_jenis']; ?>" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">
+                                    <i class="fas fa-fw fa-info-circle"></i>
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="<?= base_url('admin/edit_barang/' . $barang['kode_inventaris']); ?>" class="btn btn-warning text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Ubah">
+                                    <i class="fas fa-fw fa-edit"></i>
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="<?= base_url('admin/hapus_barang/' . $barang['kode_inventaris']); ?>" class="btn btn-danger text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hapus">
+                                    <i class="fas fa-fw fa-trash"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
