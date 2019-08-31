@@ -72,4 +72,22 @@ class Admin_model extends CI_Model
 
         message('Profile berhasil di ubah!', 'success', 'admin/profile');
     }
+
+    public function addDataBarang($data)
+    {
+        $data = array(
+            'kode_inventaris' => $this->input->post('kodeInventaris'),
+            'nama' => $this->input->post('namaBarang'),
+            'jumlah' => $this->input->post('jumlah'),
+            'kondisi' => $this->input->post('kondisi'),
+            'id_jenis' => $this->input->post('jenis'),
+            'keterangan' => $this->input->post('keterangan'),
+            'tanggal_register' => time(),
+            'id_admin' => $this->session->userdata('user')['id_admin']
+        );
+
+        $this->db->insert('inventaris', $data);
+        message('Data Berhasil ditambahkan','success','admin/inventaris');
+    }
+
 }
