@@ -77,8 +77,8 @@ class Admin_model extends CI_Model
     public function addDataBarang($data)
     {
         $data = array(
-            'kode_inventaris' => $this->input->post('kodeInventaris'),
-            'nama' => $this->input->post('namaBarang'),
+            'kode_inventaris' => $this->input->post('kodeinventaris'),
+            'nama' => $this->input->post('namabarang'),
             'jumlah' => $this->input->post('jumlah'),
             'kondisi' => $this->input->post('kondisi'),
             'id_jenis' => $this->input->post('jenis'),
@@ -88,6 +88,30 @@ class Admin_model extends CI_Model
         );
 
         $this->db->insert('inventaris', $data);
+        message('Data Berhasil ditambahkan','success','admin/inventaris');
+    }
+
+    //Edit Data
+    public function editData($data)
+    {
+        $kode_inventaris = $barang['kode_inventaris'];
+        $data = array(
+            'kode_inventaris' => $this->input->post('kodeinventaris'),
+            'nama' => $this->input->post('namabarang'),
+            'jumlah' => $this->input->post('jumlah'),
+            'kondisi' => $this->input->post('kondisi'),
+            'id_jenis' => $this->input->post('jenis'),
+            'keterangan' => $this->input->post('keterangan'),
+            'tanggal_register' => time(),
+            'id_admin' => $this->session->userdata('user')['id_admin']
+        );
+
+        var_dump($data);die;
+
+        $this->db->set($data);
+        $this->db->where('kode_inventaris', $kode_inventaris);
+        $this->db->update('inventaris', $data);
+
         message('Data Berhasil ditambahkan','success','admin/inventaris');
     }
 
