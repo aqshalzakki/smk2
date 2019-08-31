@@ -77,8 +77,8 @@ class Admin_model extends CI_Model
     public function addDataBarang($data)
     {
         $data = array(
-            'kode_inventaris' => $this->input->post('kodeinventaris'),
-            'nama' => $this->input->post('namabarang'),
+            'kode_inventaris' => $this->input->post('kodeInventaris'),
+            'nama' => $this->input->post('namaBarang'),
             'jumlah' => $this->input->post('jumlah'),
             'kondisi' => $this->input->post('kondisi'),
             'id_jenis' => $this->input->post('jenis'),
@@ -94,32 +94,32 @@ class Admin_model extends CI_Model
     //Edit Data
     public function editData($data)
     {
-        $kode_inventaris = $barang['kode_inventaris'];
+        
+        $kode_inventaris = $data['kodeInventaris'];
+
         $data = array(
-            'kode_inventaris' => $this->input->post('kodeinventaris'),
-            'nama' => $this->input->post('namabarang'),
+            'kode_inventaris' => $this->input->post('kodeInventaris'),
+            'nama' => $this->input->post('namaBarang'),
             'jumlah' => $this->input->post('jumlah'),
             'kondisi' => $this->input->post('kondisi'),
             'id_jenis' => $this->input->post('jenis'),
             'keterangan' => $this->input->post('keterangan'),
-            'tanggal_register' => time(),
             'id_admin' => $this->session->userdata('user')['id_admin']
         );
 
-        var_dump($data);die;
-
         $this->db->set($data);
         $this->db->where('kode_inventaris', $kode_inventaris);
-        $this->db->update('inventaris', $data);
+        $this->db->update('inventaris');
 
-        message('Data Berhasil ditambahkan','success','admin/inventaris');
+        message('Data Berhasil Diubah!','success','admin/inventaris');
     }
-
+    
 
     // Hapus Data
     public function hapusBarang($kode_inventaris)
     {
         $this->db->where('kode_inventaris', $kode_inventaris);
         $this->db->delete('inventaris');
+        message('Data Berhasil Dihapus!','success','admin/inventaris');
     }
 }

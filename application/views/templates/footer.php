@@ -52,8 +52,8 @@
         </button>
       </div>
       <div class="modal-body mx-2">
-        <form action="" method="post">
-            <input type="hidden" name="id" id="id">
+        <form action="<?= base_url('admin/tambahData'); ?>" method="post">
+            <input type="hidden" name="id" id="id" value="">
             <div class="form-group">
               <label for="Kode">Kode Inventaris</label>
               <input type="text" class="form-control" id="kodeinventaris" name="kodeInventaris" placeholder="10000xx">

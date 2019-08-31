@@ -19,21 +19,25 @@
     </h1>
 
 
-    <!-- Jika levelnya ADMIN maka content ini AKAN ditampilkan -->
-
-    <?php if($level == 'admin') : ?>
-        <div class="btn pull-right">
-            <a data-toggle="modal" data-target="#tambahModal" href="#" class="btn btn-primary right tambahModal">
-                <span>
-                    <i class="fas fa-plus"> </i>
-                    Tambah Data
-                </span>
-            </a>
-        </div>
-    <?php endif; ?>
-
     <div class="row">
         <div class="col-md-9">
+
+            <!-- MESSAGE -->
+            <?= $this->session->flashdata('message'); ?>
+            
+            <!-- Jika levelnya ADMIN maka content ini AKAN ditampilkan -->
+
+            <?php if ($level == 'admin') : ?>
+                <div class="btn pull-right">
+                    <a data-toggle="modal" data-target="#tambahModal" href="#" class="btn btn-primary right tambahModal">
+                        <span>
+                            <i class="fas fa-plus"> </i>
+                            Tambah Data
+                        </span>
+                    </a>
+                </div>
+            <?php endif; ?>
+
             <table id="td_barang" class="table table-hover table-striped table-bordered text-center">
                 <tr>
                     <th>No</th>
@@ -42,8 +46,8 @@
                     <th>Jumlah</th>
 
                     <!-- Jika levelnya ADMIN maka kolom ini AKAN ditampilkan -->
-                    <?php if($level == 'admin') : ?>
-                        
+                    <?php if ($level == 'admin') : ?>
+
                         <th>Aksi</th>
 
                     <?php endif; ?>
@@ -58,8 +62,8 @@
                         <td><?= $barang['jumlah']; ?></td>
 
                         <!-- Jika levelnya ADMIN maka kolom ini AKAN ditampilkan -->
-                        <?php if($level == 'admin') : ?>
-                        
+                        <?php if ($level == 'admin') : ?>
+
                             <td>
                                 <div class="btn-group">
                                     <a href="<?= base_url('admin/detail_barang/' . $barang['kode_inventaris']) . '/' . $barang['id_jenis']; ?>" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">
@@ -67,7 +71,7 @@
                                     </a>
                                 </div>
                                 <div class="btn-group">
-                                    <a href="<?= base_url('admin/edit_barang/' . $barang['kode_inventaris']); ?>" class="btn btn-warning text-white editModal" data-toggle="modal" data-target="#tambahModal" data-id="<?= $barang['kode_inventaris']; ?>" data-placement="bottom" title="" data-original-title="Ubah">
+                                    <a href="<?= base_url('admin/edit_barang/') ?> " class="btn btn-warning text-white editModal" data-toggle="modal" data-target="#tambahModal" data-id="<?= $barang['kode_inventaris']; ?>" data-placement="bottom" title="" data-original-title="Ubah">
                                         <i class="fas fa-fw fa-edit"></i>
                                     </a>
                                 </div>

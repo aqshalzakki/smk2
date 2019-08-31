@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    const baseUrl = "http://localhost/framework/smk2/"
 
     $('.input-gambar-pegawai').change(function(){
 
@@ -58,48 +57,50 @@ $(document).ready(function(){
 
    	})
 
-})
+		//    TAMBAH MODAL 
+	   $('.tambahModal').on('click', function(){
 
-$(function(){
+		   $('#titleModal').html('Tambah Data');
+		   $('#kodeinventaris').removeAttr('readonly',false);
+		   $('.modal-footer button[type=submit]').html('Tambah');
+		   $('.modal-body form').attr('action','http://localhost/smk2/admin/tambahData');
+			   
+		   $('#kodeinventaris').val('')
+		   $('#namabarang').val('')
+		   $('#jumlah').val('')
+		   $('#kondisi').val('')
+		   $('#jenis').val(1)
+		   $('#keterangan').val('')
+		   $('#id').val('')
+	   });
 
-	// #id && .class
 
-	$('.tambahModal').on('click', function(){
-		
-		$('#titleModal').html('Tambah Data');
-			$('#kodeinventaris').removeAttr('disabled',false);
-			$('.modal-footer button[type=submit]').html('Tambah');
-			$('.modal-body').attr('action','http://localhost/smk2/admin/tambahData');
-			
-		});
-		
-		$('.editModal').on('click', function(){
+	   // EDIT MODAL  
+	   $('.editModal').on('click', function(){
 			
 			$('#titleModal').html('Ubah Data');
-				$('.modal-body').attr('action','http://localhost/smk2/admin/edit_barang');
-				$('#kodeinventaris').attr('disabled',true);
-				$('.modal-footer button[type=submit]').html('Ubah');
+			$('.modal-body form').attr('action','http://localhost/smk2/admin/edit_barang');
+			$('#kodeinventaris').attr('readonly',true);
+			$('.modal-footer button[type=submit]').html('Ubah');
 
-		const id = $(this).data('id');
-		
-		$.ajax({
-			url: 'http://localhost/smk2/admin/getEditData',
-			data: {id : id},
-			method:'post' ,
-			dataType: 'json',
-			success: function(data){
-				$('#kodeinventaris').val(data.kode_inventaris);
-				$('#namabarang').val(data.nama);
-				$('#jumlah').val(data.jumlah);
-				$('#kondisi').val(data.kondisi);
-				$('#jenis').val(data.id_jenis);
-				$('#keterangan').val(data.keterangan);
-				$('#id').val(data.id);
-				
-			} 
-		});
-		
+			const id = $(this).data('id');
+			
+			$.ajax({
+				url: 'http://localhost/smk2/admin/getEditData',
+				data: {id : id},
+				method:'post' ,
+				dataType: 'json',
+				success: function(data){
 
-	});
+					$('#kodeinventaris').val(data.kode_inventaris)
+					$('#namabarang').val(data.nama)
+					$('#jumlah').val(data.jumlah)
+					$('#kondisi').val(data.kondisi)
+					$('#jenis').val(data.id_jenis)
+					$('#keterangan').val(data.keterangan)
+					$('#id').val(data.id)
+				}
+			})
 
-});
+		})
+	})
