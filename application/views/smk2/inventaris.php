@@ -72,7 +72,7 @@
                                     </a>
                                 </div>
                                 <div class="btn-group">
-                                    <a href="<?= base_url('admin/hapus_barang/' . $barang['kode_inventaris']); ?>" class="btn btn-danger text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hapus">
+                                    <a href="<?= base_url('admin/hapus_barang/' . $barang['kode_inventaris']); ?>" class="btn btn-danger text-white" onclick="return confirm('Apakah Anda yakin ingin menghapus data?')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hapus">
                                         <i class="fas fa-fw fa-trash"></i>
                                     </a>
                                 </div>

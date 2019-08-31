@@ -73,6 +73,7 @@ class Admin_model extends CI_Model
         message('Profile berhasil di ubah!', 'success', 'admin/profile');
     }
 
+    // Tambah Data
     public function addDataBarang($data)
     {
         $data = array(
@@ -90,4 +91,11 @@ class Admin_model extends CI_Model
         message('Data Berhasil ditambahkan','success','admin/inventaris');
     }
 
+
+    // Hapus Data
+    public function hapusBarang($kode_inventaris)
+    {
+        $this->db->where('kode_inventaris', $kode_inventaris);
+        $this->db->delete('inventaris');
+    }
 }
