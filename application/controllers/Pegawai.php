@@ -87,18 +87,96 @@ class Pegawai extends CI_Controller {
 	{
 		pegawai_logged_in();
 
+		$data['judul'] = 'Peminjaman Barang';
+
+		$data['nama_level'] = strtolower($this->session->userdata('user')['nama_level']);
+
 		$data['user'] = $this->db->get_where('pegawai', ['id_pegawai', $this->session->userdata('user')['id_pegawai']])->row_array();
 
-		$data['judul'] = 'Peminjaman Barang';
-		view([
-			'templates/header',
-			'templates/sidebar',
-			'templates/topbar',
-			'smk2/peminjaman',
-			'templates/footer'
-		], $data);
+		$this->form_validation->set_rules('kode-barang', '', 'required', [
+			'required' => 'Kode Barang tidak boleh kosong'
+		]);
+
+		$this->form_validation->set_rules('jumlah-barang', '', 'required|is_numeric', [
+			'required' => 'Jumlah Barang tidak boleh kosong',
+			'is_numeric' => 'Jumlah Barang harus berisi angka'
+		]);
+
+		if($this->form_validation->run() == FALSE)
+		{
+
+			view([
+				'templates/header',
+				'templates/sidebar',
+				'templates/topbar',
+				'smk2/peminjaman',
+				'templates/footer'
+			], $data);
+			
+		}
+		else
+		{
+
+			$this->pegawai->peminjamanBarang();
+
+		}
+
 	}
 	
 	
 	// -----------------
-}
+
+	
+
+	// METHOD INVENTARIS
+
+	public function inventaris()
+	{
+		pegawai_logged_in();
+
+		$data['judul'] = 'Inventaris';
+
+		$data['inventaris'] = $this->db->get('inventaris')->result_array();
+
+		$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
+		
+		$data['user'] = $this->pegawai->getPegawaiById();
+
+		view([
+			'templates/header',
+			'templates/sidebar',
+			'templates/topbar',
+			'smk2/inventaris',
+			'templates/footer'
+		], $data);
+
+	}
+
+
+	// Method untuk AJAX Detail Peminjam
+	public function detailPeminjam()
+	{
+
+		echo json_encode($this->db->get_where('peminjaman', ['id_peminjaman' => $_POST['idPeminjaman']])->row_array());
+
+	}
+
+	public function barangDiPinjam()
+	{
+
+		echo json_encode($this->db->get_where('inventaris', ['kode_inventaris' => $_POST['kode_barang']])->row_array());
+
+	}
+
+}	
+
+
+
+
+
+
+
+
+
+
+

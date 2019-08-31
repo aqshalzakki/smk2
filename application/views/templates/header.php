@@ -23,6 +23,9 @@
   <!-- CSS dataTables -->
   <link rel="stylesheet" type="text/css" href="<?= base_url('vendor/vendor/'); ?>/DataTables/datatables.css">
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="<?= base_url('vendor/css/style.css'); ?>">
+
 </head>
 
 <body id="page-top">

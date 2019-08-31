@@ -58,4 +58,81 @@ class Pegawai_model extends CI_Model
 
         
     }
+
+    public function getPegawaiById()
+    {
+
+        return $this->db->get_where('pegawai', ['id_pegawai', $this->session->userdata('user')['id_pegawai']])->row_array();
+
+    }
+
+
+    // Model Peminjaman
+    public function peminjamanBarang()
+    {
+
+        $kode_barang = htmlspecialchars($this->input->post('kode-barang'));
+
+        $jumlah_barang = htmlspecialchars($this->input->post('jumlah-barang'));
+
+        $inventaris = $this->db->get_where('inventaris', ['kode_inventaris' => (int) $kode_barang])->row_array();
+
+        // Cek apakah kode barang terdaftar
+        if($inventaris)
+        {
+
+            // Cek apakah stock barang masih ada
+            if((int) $inventaris['jumlah'] > 0 OR (int) $inventaris['jumlah'] == 0)
+            {
+
+                // Cek apakah jumlah barang lebih besar dari jumlah ketersediaannya
+                if((int)$jumlah_barang <= (int)$inventaris['jumlah'])
+                {
+
+                    $data = [
+                        'jumlah' => (int) $jumlah_barang,
+                        'tanggal_pinjam' => time(),
+                        'tanggal_kembali' => '-',
+                        'status_peminjaman' => 'DIPINJAM',
+                        'id_pegawai' => $this->session->userdata('user')['id_pegawai'],
+                        'kode_inventaris' => (int) $kode_barang
+                    ];
+
+                    $this->db->insert('peminjaman', $data);
+
+                    // Jumlah barang pada tabel INVENTARIS akan berkurang ketika dipinjam
+
+                    $jumlah_akhir = (int) $inventaris['jumlah'] - (int) $jumlah_barang;
+
+                    $this->db->update('inventaris', ['jumlah' => $jumlah_akhir], ['kode_inventaris' => $kode_barang]);
+
+                    message('Peminjaman Berhasil!', 'success', 'pegawai/peminjaman');
+
+                }
+                else
+                {
+
+                    // Jika jumlah lebih besar maka akan ditampilkan pesan
+                    message('Jumlah Barang melebihi batas!', 'danger', 'pegawai/peminjaman');    
+
+                }
+
+            }
+            else
+            {
+
+                message('Stock barang habis!', 'danger', 'pegawai/peminjaman');
+
+            }
+            
+
+        }
+        else
+        {
+            // Jika barang tidak ditemukan maka akan ditampilkan pesan
+            message('Kode Barang salah!', 'danger', 'pegawai/peminjaman');
+
+        }
+
+    }
 }

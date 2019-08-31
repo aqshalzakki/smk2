@@ -37,8 +37,11 @@ class Admin extends CI_Controller {
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
 
 		$data['judul'] = 'Inventaris';
+
 		$data['inventaris'] = $this->admin->getBarang();
 		
+		$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
+
 		view([
 			'templates/header',
 			'templates/sidebar',
@@ -84,9 +87,14 @@ class Admin extends CI_Controller {
 	{
 		admin_logged_in();
 
+		$data['judul'] = 'Peminjaman Barang';
+
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
 
-		$data['judul'] = 'Peminjaman Barang';
+		$data['nama_level'] = strtolower($this->session->userdata('user')['nama_level']);
+
+		$data['peminjam'] = $this->db->get('peminjaman')->result_array();
+
 		view([
 			'templates/header',
 			'templates/sidebar',
