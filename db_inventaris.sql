@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2019 at 08:44 AM
+-- Generation Time: Aug 31, 2019 at 09:42 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -48,18 +48,6 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `alamat`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_peminjam`
---
-
-CREATE TABLE `detail_peminjam` (
-  `id_detail_pinjam` int(11) NOT NULL,
-  `id_inventaris` int(11) NOT NULL,
-  `jumlah` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `inventaris`
 --
 
@@ -99,7 +87,9 @@ CREATE TABLE `jenis` (
 
 INSERT INTO `jenis` (`id_jenis`, `nama_jenis`) VALUES
 (1, 'Elektronik'),
-(2, 'Non-Elektronik');
+(2, 'Peralatan Olahraga'),
+(3, 'Alat Tulis\r\n'),
+(4, 'Properti Kelas');
 
 -- --------------------------------------------------------
 
@@ -153,11 +143,12 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `ni
 
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
-  `id_peminjam` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
   `tanggal_pinjam` date NOT NULL,
   `tanggal_kembali` date NOT NULL,
   `status_peminjaman` varchar(128) NOT NULL,
-  `id_pegawai` int(11) NOT NULL
+  `id_pegawai` int(11) NOT NULL,
+  `kode_inventaris` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -220,7 +211,7 @@ CREATE TABLE `user_submenu` (
 --
 
 INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
-(1, 1, 'Inventaris', '/inventaris', 'fas fa-fw fa-boxes'),
+(1, 3, 'Inventaris', '/inventaris', 'fas fa-fw fa-boxes'),
 (2, 3, 'Profile', '/profile', 'fas fa-fw fa-users'),
 (3, 3, 'Edit Profile', '/edit_profile', 'fas fa-fw fa-user-edit'),
 (4, 1, 'Pengembalian Barang', '/pengembalian', 'fas fa-fw fa-undo'),
@@ -235,12 +226,6 @@ INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
-
---
--- Indexes for table `detail_peminjam`
---
-ALTER TABLE `detail_peminjam`
-  ADD PRIMARY KEY (`id_detail_pinjam`);
 
 --
 -- Indexes for table `inventaris`
@@ -270,8 +255,7 @@ ALTER TABLE `pegawai`
 -- Indexes for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  ADD PRIMARY KEY (`id_peminjaman`),
-  ADD UNIQUE KEY `id_pegawai` (`id_pegawai`);
+  ADD PRIMARY KEY (`id_peminjaman`);
 
 --
 -- Indexes for table `user_access_menu`
@@ -302,12 +286,6 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080201;
 
 --
--- AUTO_INCREMENT for table `detail_peminjam`
---
-ALTER TABLE `detail_peminjam`
-  MODIFY `id_detail_pinjam` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `inventaris`
 --
 ALTER TABLE `inventaris`
@@ -317,7 +295,7 @@ ALTER TABLE `inventaris`
 -- AUTO_INCREMENT for table `jenis`
 --
 ALTER TABLE `jenis`
-  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `level`
