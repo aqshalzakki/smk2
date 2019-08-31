@@ -41,7 +41,7 @@
   </div>
 
 <!-- Tambah Data Modal -->
-<div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="tambahModal" tabindex="-1"  aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -52,33 +52,47 @@
         </button>
       </div>
       <div class="modal-body mx-2">
-        <form action="" method="post">
-          <div class="form-group">
-            <label for="nama">Kode Inventaris</label>
-            <input type="text" class="form-control" id="kodeInventaris" name="kode_inventaris">
-          </div>
-          <div class="form-group">
-            <label for="nama">Nama Barang</label>
-            <input type="text" class="form-control" id="namaBarang" name="nama">
-          </div>
-          <div class="form-group">
-            <label for="nama">Jumlah</label>
-            <input type="text" class="form-control" id="jumlah" name="jumlah">
-          </div>
-          <div class="form-group">
-            <label for="nama">Kondisi</label>
-            <input type="text" class="form-control" id="kondisi" name="kondisi">
-          </div>
-          <div class="form-group">
-            <label for="nama">Keterangan</label>
-            <textarea class="form-control" id="keterangan" rows="2`"></textarea>
-          </div>
-        </form>
+        <form action="<?= base_url('admin/tambahData'); ?>" method="post">
+            <div class="form-group">
+              <label for="Kode">Kode Inventaris</label>
+              <input type="text" class="form-control" id="kodeInventaris" name="kodeInventaris" placeholder="10000xx">
+            </div>
+            <div class="form-group">
+              <label for="Nama">Nama Barang</label>
+              <input type="text" class="form-control" id="namaBarang" name="namaBarang">
+            </div>
+            <div class="form-group">
+              <label for="Jumlah">Jumlah</label>
+              <input type="text" class="form-control" id="jumlah" name="jumlah">
+            </div>
+            <div class="form-group">
+              <label for="Kondisi">Kondisi</label>
+              <input type="text" class="form-control" id="kondisi" name="kondisi">
+            </div>
+            <div class="form-group">
+              <label for="jenis">Jenis Barang</label>
+              <select class="form-control" id="jenis" name="jenis">
+                <option disabled selected>Elektronik</option>
+                  <option>1</option>
+                <option disabled selected>Peralatan Olahraga</option>
+                  <option>2</option>
+                <option disabled selected>Alat Tulis</option>
+                  <option>3</option>
+                <option  disabled selected>Properti Kelas</option>
+                  <option>4</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nama">Keterangan</label>
+              <textarea class="form-control" id="keterangan" rows="2" name="keterangan"></textarea>
+            </div>
+        
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary">Tambah</button>
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">batal</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
       </div>
+        </form>
     </div>
   </div>
 </div>

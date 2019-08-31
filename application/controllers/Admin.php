@@ -71,8 +71,18 @@ class Admin extends CI_Controller {
 		
 	}
 
+	// METHOD TAMBAH BARANG
+
+	public function tambahData()
+	{
+		if ($this->admin->addDataBarang($_POST) > 0)
+		{
+			redirect($this->load->view('smkn2/inventaris'));
+		}
+	}
+
+
 	// METHOD EDIT BARANG
-	
 	
 	
 	// METHOD HAPUS BARANG
