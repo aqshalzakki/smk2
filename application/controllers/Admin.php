@@ -93,7 +93,7 @@ class Admin extends CI_Controller {
 	{
 		$this->load->model('Admin_model');
 		$this->Admin_model->hapusBarang($kode_inventaris);
-		redirect('admin/inventaris');	
+		redirect('admin/inventaris');
 	}
 
 	// METHOD PEMINJAMAN BARANG
