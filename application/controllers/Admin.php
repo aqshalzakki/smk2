@@ -95,15 +95,22 @@ class Admin extends CI_Controller {
 	// --------------------
 
 	// METHOD HAPUS BARANG
-	public function hapus_barang($kode_inventaris)
+	public function hapus_barang()
 	{
-<<<<<<< HEAD
-		$this->load->model('Admin_model');
-		$this->Admin_model->hapusBarang($kode_inventaris);
-		redirect('admin/inventaris');
-=======
-		$this->admin->hapusBarang($kode_inventaris);	
->>>>>>> 8874336a195b705de86781811e40226f1f11496a
+		
+		if($this->input->post('kode_inventaris'))
+		{
+
+			$this->admin->hapus_barang();
+
+		}
+		else
+		{
+
+			redirect('admin/inventaris');
+
+		}
+
 	}
 
 	// METHOD PEMINJAMAN BARANG

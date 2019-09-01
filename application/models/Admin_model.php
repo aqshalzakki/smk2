@@ -5,7 +5,7 @@ class Admin_model extends CI_Model
 {
     public function getBarang()
     {
-        return $this->db->order_by('id_inventaris','DESC')->get('inventaris')->result_array();
+        return $this->db->order_by('id_inventaris')->get('inventaris')->result_array();
     }
     
     public function getDetailBarang($kode)
@@ -113,13 +113,14 @@ class Admin_model extends CI_Model
 
         message('Data Berhasil Diubah!','success','admin/inventaris');
     }
-    
 
-    // Hapus Data
-    public function hapusBarang($kode_inventaris)
+    // Hapus barang
+    public function hapus_barang()
     {
-        $this->db->where('kode_inventaris', $kode_inventaris);
-        $this->db->delete('inventaris');
-        message('Data Berhasil Dihapus!','success','admin/inventaris');
+
+        $this->db->delete('inventaris', ['kode_inventaris' => $this->input->post('kode_inventaris')]);
+
+        message('Data berhasil dihapus', 'success', 'admin/inventaris');
+
     }
 }

@@ -104,4 +104,15 @@ $(document).ready(function(){
 			})
 
 		})
+
+
+	   // Hapus Modal
+	   $('.hapusModal').on('click', function(){
+
+	   		let kode = $(this).data('kode')
+
+	   		$('#hapusModal input').attr('value', kode)
+
+	   })
+
 	})
