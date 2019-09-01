@@ -97,7 +97,6 @@ class Admin extends CI_Controller {
 	// METHOD HAPUS BARANG
 	public function hapus_barang()
 	{
-		
 		if($this->input->post('kode_inventaris'))
 		{
 
