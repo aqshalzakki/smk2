@@ -76,8 +76,39 @@ class Admin extends CI_Controller {
 
 	// METHOD TAMBAH BARANG
 	public function tambahData()
-	{
-		$this->admin->addDataBarang($this->input->post());
+	{	
+
+		$this->form_validation->set_rules('kodeInventaris', '', 'required|is_numeric', [
+			'required' => 'Kode Inventaris tidak boleh kosong',
+			'is_numeric' => 'Kode Inventaris harus berisi angka'
+		]);
+
+		$this->form_validation->set_rules('namaBarang', '', 'required', [
+			'required' => 'Nama Barang tidak boleh kosong'
+		]);
+
+		$this->form_validation->set_rules('jumlah', '', 'required|is_numeric', [
+			'required' => 'Jumlah Barang tidak boleh kosong',
+			'is_numeric' => 'Jumlah Barang harus berisi angka'
+		]);
+
+		$this->form_validation->set_rules('kondisi', '', 'required', [
+			'required' => 'Kondisi tidak boleh kosong'
+		]);
+
+		if($this->form_validation->run() == TRUE)
+		{
+	
+			$this->admin->addDataBarang($this->input->post());
+
+		}
+		else
+		{
+
+			message(validation_errors(), 'danger', 'admin/inventaris');
+
+		}
+
 	}
 
 
