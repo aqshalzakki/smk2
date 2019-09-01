@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    const baseUrl = "http://localhost/framework/smk2/"
 
     $('.input-gambar-pegawai').change(function(){
 
@@ -42,6 +41,7 @@ $(document).ready(function(){
 				              <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
 				              <li class="list-group-item">Kode Barang : ` + result.kode_inventaris + `</li>
 				              <li class="list-group-item">Nama Barang : ` + barang.nama + `</li>
+				              <li class="list-group-item">Jumlah Barang : ` + result.jumlah + `</li>
 				              <li class="list-group-item">Tanggal Pinjam : ` + result.tanggal_pinjam + `</li>
 				              <li class="list-group-item">Tanggal Kembali : ` + result.tanggal_kembali + `</li>
 				              <li class="list-group-item">Status : 
@@ -58,4 +58,50 @@ $(document).ready(function(){
 
    	})
 
-})
+		//    TAMBAH MODAL 
+	   $('.tambahModal').on('click', function(){
+
+		   $('#titleModal').html('Tambah Data');
+		   $('#kodeinventaris').removeAttr('readonly',false);
+		   $('.modal-footer button[type=submit]').html('Tambah');
+		   $('.modal-body form').attr('action','http://localhost/smk2/admin/tambahData');
+			   
+		   $('#kodeinventaris').val('')
+		   $('#namabarang').val('')
+		   $('#jumlah').val('')
+		   $('#kondisi').val('')
+		   $('#jenis').val(1)
+		   $('#keterangan').val('')
+		   $('#id').val('')
+	   });
+
+
+	   // EDIT MODAL  
+	   $('.editModal').on('click', function(){
+			
+			$('#titleModal').html('Ubah Data');
+			$('.modal-body form').attr('action','http://localhost/smk2/admin/edit_barang');
+			$('#kodeinventaris').attr('readonly',true);
+			$('.modal-footer button[type=submit]').html('Ubah');
+
+			const id = $(this).data('id');
+			
+			$.ajax({
+				url: 'http://localhost/smk2/admin/getEditData',
+				data: {id : id},
+				method:'post' ,
+				dataType: 'json',
+				success: function(data){
+
+					$('#kodeinventaris').val(data.kode_inventaris)
+					$('#namabarang').val(data.nama)
+					$('#jumlah').val(data.jumlah)
+					$('#kondisi').val(data.kondisi)
+					$('#jenis').val(data.id_jenis)
+					$('#keterangan').val(data.keterangan)
+					$('#id').val(data.id)
+				}
+			})
+
+		})
+	})

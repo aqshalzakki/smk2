@@ -75,25 +75,35 @@ class Admin extends CI_Controller {
 	}
 
 	// METHOD TAMBAH BARANG
-
 	public function tambahData()
 	{
-		if ($this->admin->addDataBarang($_POST) > 0)
-		{
-			redirect($this->load->view('smkn2/inventaris'));
-		}
+		$this->admin->addDataBarang($this->input->post());
 	}
 
 
 	// METHOD EDIT BARANG
+	public function getEditData()
+	{
+		echo json_encode($this->admin->getDetailBarang($_POST['id']));
+	}
 	
-	
+
+	public function edit_barang()
+	{
+		$this->admin->editData($this->input->post());
+	}
+	// --------------------
+
 	// METHOD HAPUS BARANG
 	public function hapus_barang($kode_inventaris)
 	{
+<<<<<<< HEAD
 		$this->load->model('Admin_model');
 		$this->Admin_model->hapusBarang($kode_inventaris);
 		redirect('admin/inventaris');
+=======
+		$this->admin->hapusBarang($kode_inventaris);	
+>>>>>>> 8874336a195b705de86781811e40226f1f11496a
 	}
 
 	// METHOD PEMINJAMAN BARANG

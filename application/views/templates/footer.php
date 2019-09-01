@@ -46,20 +46,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title">Tambah Data</h4>
+        <h4 class="modal-title" id="titleModal">Tambah Data</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-2">
         <form action="<?= base_url('admin/tambahData'); ?>" method="post">
+            <input type="hidden" name="id" id="id" value="">
             <div class="form-group">
               <label for="Kode">Kode Inventaris</label>
-              <input type="text" class="form-control" id="kodeInventaris" name="kodeInventaris" placeholder="10000xx">
+              <input type="text" class="form-control" id="kodeinventaris" name="kodeInventaris" placeholder="10000xx">
             </div>
             <div class="form-group">
               <label for="Nama">Nama Barang</label>
-              <input type="text" class="form-control" id="namaBarang" name="namaBarang">
+              <input type="text" class="form-control" id="namabarang" name="namaBarang">
             </div>
             <div class="form-group">
               <label for="Jumlah">Jumlah</label>

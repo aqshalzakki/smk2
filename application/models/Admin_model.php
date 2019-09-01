@@ -91,11 +91,35 @@ class Admin_model extends CI_Model
         message('Data Berhasil ditambahkan','success','admin/inventaris');
     }
 
+    //Edit Data
+    public function editData($data)
+    {
+        
+        $kode_inventaris = $data['kodeInventaris'];
+
+        $data = array(
+            'kode_inventaris' => $this->input->post('kodeInventaris'),
+            'nama' => $this->input->post('namaBarang'),
+            'jumlah' => $this->input->post('jumlah'),
+            'kondisi' => $this->input->post('kondisi'),
+            'id_jenis' => $this->input->post('jenis'),
+            'keterangan' => $this->input->post('keterangan'),
+            'id_admin' => $this->session->userdata('user')['id_admin']
+        );
+
+        $this->db->set($data);
+        $this->db->where('kode_inventaris', $kode_inventaris);
+        $this->db->update('inventaris');
+
+        message('Data Berhasil Diubah!','success','admin/inventaris');
+    }
+    
 
     // Hapus Data
     public function hapusBarang($kode_inventaris)
     {
         $this->db->where('kode_inventaris', $kode_inventaris);
         $this->db->delete('inventaris');
+        message('Data Berhasil Dihapus!','success','admin/inventaris');
     }
 }
