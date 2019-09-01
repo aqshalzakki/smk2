@@ -7,12 +7,18 @@ class Admin_model extends CI_Model
     {
         return $this->db->order_by('id_inventaris')->get('inventaris')->result_array();
     }
-    
     public function getDetailBarang($kode)
     {
         return $this->db->get_where('inventaris', ['kode_inventaris' => $kode])->row_array();
     }
-
+    public function getPegawai()
+    {
+        return $this->db->order_by('id_pegawai','DESC')->get('pegawai')->result_array();
+    }
+    public function getDetailPegawai($data)
+    {
+        return $this->db->get_where('pegawai', ['id_pegawai' => $data])->row_array();
+    }
     public function getJenisById($id_jenis)
     {
         return $this->db->get_where('jenis', ['id_jenis' => $id_jenis])->row_array();

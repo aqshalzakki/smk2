@@ -61,7 +61,7 @@ $(document).ready(function(){
 
    	})
 
-		//    TAMBAH MODAL 
+		//    TAMBAH INVENTARIS MODAL 
 	   $('.tambahModal').on('click', function(){
 
 		   $('#titleModal').html('Tambah Data');
@@ -79,7 +79,7 @@ $(document).ready(function(){
 	   });
 
 
-	   // EDIT MODAL  
+	   // EDIT INVENTARIS MODAL  
 	   $('.editModal').on('click', function(){
 			
 			$('#titleModal').html('Ubah Data');
