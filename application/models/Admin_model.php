@@ -123,4 +123,30 @@ class Admin_model extends CI_Model
         message('Data berhasil dihapus', 'success', 'admin/inventaris');
 
     }
+
+    // Status Peminjam
+    public function status_peminjam()
+    {
+
+        $status = htmlspecialchars($this->input->post('status'));
+
+        $id_peminjaman = $this->input->post('idPeminjaman');
+
+        $this->db->update('peminjaman', ['status_peminjaman' => $status], ['id_peminjaman' => $id_peminjaman]);
+
+        if($this->db->affected_rows())
+        {
+
+            message('Status berhasil diubah', 'success', 'admin/peminjaman');
+            
+        }
+        else
+        {
+
+            redirect('admin/peminjaman');
+
+        }
+
+
+    }
 }

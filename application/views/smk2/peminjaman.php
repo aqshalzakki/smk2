@@ -49,20 +49,27 @@
                 <?php else : ?>
 
                     <!-- Jika levelnya ADMIN maka tabel ini AKAN ditampilkan -->
-                    <div class="col-md-12">
-                        <div class="card list-peminjam" style="width: 18rem;">
-                          <ul class="list-group list-group-flush">
+                    <div class="col-md-6">
+                            <?php if($peminjam) : ?>
+                                <?= $this->session->flashdata('message'); ?>
+                                <div class="card list-peminjam" style="width: 18rem;">
+                                    <ul class="list-group list-group-flush">
 
-                            <?php foreach($peminjam as $p) : ?>
-                                
-                                <?php $nama = $this->db->get_where('pegawai', ['id_pegawai' => $p['id_pegawai']])->row_array()['nama_pegawai']; ?>
+                                        <?php foreach($peminjam as $p) : ?>
+                                            
+                                            <?php $nama = $this->db->get_where('pegawai', ['id_pegawai' => $p['id_pegawai']])->row_array()['nama_pegawai'];?> 
 
-                                <li class="list-group-item" data-id="<?= $p['id_peminjaman']; ?>" data-nama="<?= $nama; ?>" data-toggle="modal" data-target="#detailPeminjam"><?= $nama; ?></li>
-                            
-                            <?php endforeach; ?>
-                          
-                          </ul>
-                        </div>
+                                            <li class="list-group-item" data-id="<?= $p['id_peminjaman']; ?>" data-nama="<?= $nama; ?>" data-toggle="modal" data-target="#modalDetailPeminjam"><?= $nama; ?></li>
+                                        
+                                        <?php endforeach; ?>
+
+                                    </ul>
+                                </div>
+                            <?php else : ?>
+
+                                <h5><i>Tidak ada peminjam</i></h5>
+
+                            <?php endif; ?>
                     </div>
 
             <?php endif; ?>

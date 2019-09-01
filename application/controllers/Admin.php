@@ -157,6 +157,7 @@ class Admin extends CI_Controller {
 
 		$data['peminjam'] = $this->db->get('peminjaman')->result_array();
 
+
 		view([
 			'templates/header',
 			'templates/sidebar',
@@ -247,7 +248,41 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	// Method Status Detail Peminjam
+	public function status_peminjam()
+	{
 
+		if($this->input->post('status') AND $this->input->post('idPeminjaman'))
+		{
+
+			$this->admin->status_peminjam();
+
+		}
+		else
+		{
+
+			header("Location: " . __FILE__);
+
+			exit;
+
+		}
+
+	}
+
+	// Method detail peminjam
+	public function detailPeminjam()
+	{
+
+		echo json_encode($this->db->get_where('peminjaman', ['id_peminjaman' => $_POST['idPeminjaman']])->row_array());
+
+	}
+
+	public function barangDiPinjam()
+	{
+
+		echo json_encode($this->db->get_where('inventaris', ['kode_inventaris' => $_POST['kode_barang']])->row_array());
+
+	}
 
 
 }

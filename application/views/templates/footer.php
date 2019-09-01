@@ -21,24 +21,23 @@
   </a>
 
   <!-- Logout Modal-->
-  <div>
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar ?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-footer">
-            <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Keluar</a>
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">batal</button>
-          </div>
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Keluar</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">batal</button>
         </div>
       </div>
     </div>
   </div>
+
 
 <!-- Tambah Data Modal -->
 <div class="modal fade" id="tambahModal" tabindex="-1"  aria-labelledby="myModalLabel"
@@ -101,27 +100,51 @@
   <!-- Modal hapus data -->
   <div class="modal fade" id="hapusModal" tabindex="-1"  aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title" id="titleModal">Hapus Data</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title" id="titleModal">Hapus Data</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= base_url('admin/hapus_barang'); ?>" method="post">
+          <div class="modal-body mx-2">
+            <h6 class="text-center">Anda yakin ingin menghapus data ini?<h6>
+            <input type="hidden" name="kode_inventaris">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Hapus</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          </div>
+        </form>
       </div>
-      <form action="<?= base_url('admin/hapus_barang'); ?>" method="post">
-        <div class="modal-body mx-2">
-          <h6 class="text-center">Anda yakin ingin menghapus data ini?<h6>
-          <input type="hidden" name="kode_inventaris">
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Hapus</button>
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-        </div>
-      </form>
     </div>
   </div>
-</div>
+
+  <!-- Modal Detail Peminjam -->
+  <div class="modal fade" id="modalDetailPeminjam" tabindex="-1"  aria-labelledby="myModalLabel"
+  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title" id="titleModal">Detail Peminjam</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="<?= base_url('admin/status_peminjam'); ?>" method="post">
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">OK</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Bootstrap core JavaScript-->

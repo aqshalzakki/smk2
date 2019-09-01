@@ -12,6 +12,8 @@ $(document).ready(function(){
 
    		let idPeminjaman = $(this).data('id')
 
+   		console.log(idPeminjaman)
+
    		let namaPeminjam = $(this).data('nama')
 
    		let baseUrl = 'http://localhost/smk2/pegawai/'
@@ -36,7 +38,7 @@ $(document).ready(function(){
    					success : function(barang)
    					{
 
-   						$('.modalDetailPeminjam div.modal-body').html(
+   						$('#modalDetailPeminjam div.modal-body').html(
 		   					`<ul class="list-group list-group-flush">
 				              <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
 				              <li class="list-group-item">Kode Barang : ` + result.kode_inventaris + `</li>
@@ -46,6 +48,7 @@ $(document).ready(function(){
 				              <li class="list-group-item">Tanggal Kembali : ` + result.tanggal_kembali + `</li>
 				              <li class="list-group-item">Status : 
 				              	<input type="text" name="status" class="form-control text-center" value="` + result.status_peminjaman + `">
+				              	<input type="hidden" name="idPeminjaman" value="` + idPeminjaman + `">
 				              </li>
 				            </ul>`
 			            )
