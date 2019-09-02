@@ -23,18 +23,6 @@
         <!-- MESSAGE -->
         <?= $this->session->flashdata('message'); ?>
             
-            <!-- Jika levelnya ADMIN maka content ini AKAN ditampilkan -->
-
-            <?php if ($level == 'admin') : ?>
-                <div class="btn pull-right">
-                    <a data-toggle="modal" data-target="#" href="#" class="btn btn-primary right tambahModal">
-                        <span>
-                            <i class="fas fa-plus"> </i>
-                            Tambah Data
-                        </span>
-                    </a>
-                </div>
-            <?php endif; ?>
 
             <table id="tb_pegawai" class="table table-hover table-striped table-bordered">
                 <th>No</th>
@@ -66,11 +54,6 @@
                                 <div class="btn-group">
                                     <a href="<?= base_url('admin/detail_pegawai/' . $p['id_pegawai']) . '/' . $p['id_level']; ?>" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">
                                         <i class="fas fa-fw fa-info-circle"></i>
-                                    </a>
-                                </div>
-                                <div class="btn-group">
-                                    <a href="<?= base_url('admin/edit_pegawai/') ?> " class="btn btn-warning text-white editModal" data-toggle="modal" data-target="#tambahModal" data-id="<?= $p['id_pegawai']; ?>" data-placement="bottom" title="" data-original-title="Ubah">
-                                        <i class="fas fa-fw fa-edit"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group">
