@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2019 at 11:47 AM
+-- Generation Time: Sep 03, 2019 at 02:16 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -144,8 +144,8 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `ni
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `tanggal_pinjam` date NOT NULL,
-  `tanggal_kembali` date NOT NULL,
+  `tanggal_pinjam` int(11) NOT NULL,
+  `tanggal_kembali` int(11) NOT NULL,
   `status_peminjaman` varchar(128) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL
@@ -156,7 +156,7 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
-(2, 50, '0000-00-00', '0000-00-00', 'DIPINJAM', 1, 1000001);
+(2, 50, 0, 0, 'DIPINJAM', 1, 1000001);
 
 -- --------------------------------------------------------
 
