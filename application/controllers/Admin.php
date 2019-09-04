@@ -60,6 +60,7 @@ class Admin extends CI_Controller {
 		}
 
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
+		
 		$data['judul'] = 'Detail barang';
 		$data['barang'] = $this->admin->getDetailBarang($kode_inventaris);
 		$data['jenis'] = $this->admin->getJenisById($id_jenis);
@@ -188,51 +189,51 @@ class Admin extends CI_Controller {
 		], $data);
 	}
 	
-		// METHOD PEGAWAI
-		public function pegawai()
-		{
-			admin_logged_in();
-	
-			$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
-	
-			$data['judul'] = 'Data Pegawai';
-	
-			$data['pegawai'] = $this->admin->getPegawai();
-			
-			$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
-	
-			view([
-				'templates/header',
-				'templates/sidebar',
-				'templates/topbar',
-				'smk2/pegawai',
-				'templates/footer'
-			], $data);
-			
+	// METHOD PEGAWAI
+	public function pegawai()
+	{
+		admin_logged_in();
+
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
+
+		$data['judul'] = 'Data Pegawai';
+
+		$data['pegawai'] = $this->admin->getPegawai();
+		
+		$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
+
+		view([
+			'templates/header',
+			'templates/sidebar',
+			'templates/topbar',
+			'smk2/pegawai',
+			'templates/footer'
+		], $data);
+		
+	}
+
+	// METHOD DETAIL PEGAWAI
+	public function detail_pegawai($id_pegawai = null , $id_level = null)
+	{
+		admin_logged_in();
+
+		if (!$id_pegawai OR !$id_level OR !$this->db->get_where('pegawai', ['id_pegawai' => $id_pegawai]) OR !$this->db->get_where('level', ['id_level' => $id_level])){
+			redirect('admin/pegawai');
 		}
 
-		// METHOD DETAIL PEGAWAI
-		public function detail_pegawai($id_pegawai = null , $id_level = null)
-		{
-			admin_logged_in();
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
+		$data['judul'] = 'Detail Pegawai';
+		$data['pegawai'] = $this->admin->getDetailPegawai($id_pegawai);
+		$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
 
-			if (!$id_pegawai OR !$id_level OR !$this->db->get_where('pegawai', ['id_pegawai' => $id_pegawai]) OR !$this->db->get_where('level', ['id_level' => $id_level])){
-				redirect('admin/pegawai');
-			}
-
-			$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
-			$data['judul'] = 'Detail Pegawai';
-			$data['pegawai'] = $this->admin->getDetailPegawai($id_pegawai);
-			$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
-	
-			view([
-				'templates/header',
-				'templates/sidebar',
-				'templates/topbar',
-				'smk2/detail-pegawai',
-				'templates/footer'
-			], $data);
-		}
+		view([
+			'templates/header',
+			'templates/sidebar',
+			'templates/topbar',
+			'smk2/detail-pegawai',
+			'templates/footer'
+		], $data);
+	}
 
 
 	public function ruang()

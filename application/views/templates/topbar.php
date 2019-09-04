@@ -29,7 +29,7 @@ $nama_level = strtolower($this->db->get_where('level', ['id_level' => $id_level]
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('user')['nama']; ?></span>
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $user['nama_' . strtolower($this->session->userdata('user')['nama_level'])]; ?></span>
             <img src="<?= base_url('vendor/img/' . $user['gambar']); ?>" class="img-profile rounded-circle" alt="">
           </a>
           <!-- Dropdown - User Information -->
