@@ -152,6 +152,7 @@ class Pegawai extends CI_Controller {
 
 	}
 
+	// ------------AJAX------------
 
 	// Method untuk AJAX Detail Peminjam
 	public function detailPeminjam()
@@ -165,6 +166,42 @@ class Pegawai extends CI_Controller {
 	{
 
 		echo json_encode($this->db->get_where('inventaris', ['kode_inventaris' => $_POST['kode_barang']])->row_array());
+
+	}
+
+	// Method untuk AJAX Peminjaman barang
+	public function getBarangByKode()
+	{
+
+		if($this->input->post('kodeBarang'))
+		{
+
+			$kode_barang = htmlspecialchars($_POST['kodeBarang']);
+
+			$data = $this->db->get_where('inventaris', ['kode_inventaris' => (int) $kode_barang])->row_array();
+
+			if($data)
+			{
+
+				echo json_encode($data);
+
+			}
+			else
+			{
+
+				$data['result'] = "Null";
+
+				echo json_encode($data);
+
+			}
+
+		}
+		else
+		{
+
+			redirect('pegawai/peminjaman');
+
+		}
 
 	}
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2019 at 09:42 AM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Sep 03, 2019 at 02:16 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,7 +68,7 @@ CREATE TABLE `inventaris` (
 --
 
 INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
-(1, 'Spidol snowman', 'Baik', 'Spidol snowman yang permanen', 100, 2, 1567182853, 1000001, 2019080200);
+(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 50, 3, 1567341165, 1000001, 2019080200);
 
 -- --------------------------------------------------------
 
@@ -144,12 +144,19 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `ni
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `tanggal_pinjam` date NOT NULL,
-  `tanggal_kembali` date NOT NULL,
+  `tanggal_pinjam` int(11) NOT NULL,
+  `tanggal_kembali` int(11) NOT NULL,
   `status_peminjaman` varchar(128) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
+(2, 50, 0, 0, 'DIPINJAM', 1, 1000001);
 
 -- --------------------------------------------------------
 
@@ -212,10 +219,11 @@ CREATE TABLE `user_submenu` (
 
 INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
 (1, 3, 'Inventaris', '/inventaris', 'fas fa-fw fa-boxes'),
-(2, 3, 'Profile', '/profile', 'fas fa-fw fa-users'),
+(2, 3, 'Profile', '/profile', 'fas fa-fw fa-user'),
 (3, 3, 'Edit Profile', '/edit_profile', 'fas fa-fw fa-user-edit'),
 (4, 1, 'Pengembalian Barang', '/pengembalian', 'fas fa-fw fa-undo'),
-(5, 3, 'Peminjaman Barang', '/peminjaman', 'fas fa-fw fa-box');
+(5, 3, 'Peminjaman Barang', '/peminjaman', 'fas fa-fw fa-box'),
+(6, 1, 'Data Pegawai', '/pegawai', 'fas fa-fw fa-users');
 
 --
 -- Indexes for dumped tables
@@ -289,7 +297,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `inventaris`
 --
 ALTER TABLE `inventaris`
-  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `jenis`
@@ -313,7 +321,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -331,7 +339,7 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT for table `user_submenu`
 --
 ALTER TABLE `user_submenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
