@@ -7,12 +7,58 @@ $(document).ready(function(){
         
     })
    	
+	// Peminjaman Barang
+	$('.form-peminjaman #kode-barang').on('keyup', function(){
+
+		let input = $(this).val()
+
+		if(input == '')
+		{
+
+			$('#form-group-kode-barang').html('')
+
+		}
+		else
+		{
+
+			$.ajax({
+				url : 'http://localhost/smk2/pegawai/getBarangByKode',
+				type : 'post',
+				data : {
+					'kodeBarang' : input
+				},
+				dataType : 'json',
+				success : function(result)
+				{	
+	
+					if(result.result)
+					{
+	
+						$('#form-group-kode-barang').removeClass('text-success')
+						$('#form-group-kode-barang').addClass('text-danger')
+						$('#form-group-kode-barang').html('Barang tidak di temukan')
+	
+					}
+					else
+					{
+	
+						$('#form-group-kode-barang').removeClass('text-danger')
+						$('#form-group-kode-barang').addClass('text-success')
+						$('#form-group-kode-barang').html(`Barang ditemukan (` + result.nama + `)`)
+	
+					}
+	
+				}
+			})
+
+		}				
+
+	})
+
    	// Detail Peminjam
    	$('.list-peminjam ul li').on('click', function(){
 
    		let idPeminjaman = $(this).data('id')
-
-   		console.log(idPeminjaman)
 
    		let namaPeminjam = $(this).data('nama')
 

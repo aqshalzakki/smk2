@@ -29,11 +29,12 @@
             <?php if($nama_level != 'admin') : ?>
                 <div class="col-md-7">
                     <?= $this->session->flashdata('message'); ?>
-                    <form action="" method="post">
+                    <form class="form-peminjaman" action="" method="post">
                         <div class="form-group">
                             <label for="kode-barang">Kode Barang</label>
-                            <input type="text" class="form-control" id="kode-barang" name="kode-barang" value="<?= set_value('kode-barang'); ?>">
+                            <input type="text" class="form-control" id="kode-barang" name="kode-barang" value="<?= set_value('kode-barang'); ?>" autocomplete="off">
                             <?= form_error('kode-barang', '<small class="text-danger">', '</small>'); ?>
+                            <p class="text-success mt-2" id="form-group-kode-barang"></p>
                         </div>
                         <div class="form-group">
                             <label for="jumlah-barang">Jumlah Barang</label>

@@ -134,7 +134,7 @@ class Admin_model extends CI_Model
     public function status_peminjam()
     {
 
-        $status = htmlspecialchars($this->input->post('status'));
+        $status = strtoupper(htmlspecialchars($this->input->post('status')));
 
         $id_peminjaman = $this->input->post('idPeminjaman');
 
