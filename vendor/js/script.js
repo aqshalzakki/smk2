@@ -1,7 +1,10 @@
 $(document).ready(function(){
+	// console.log('oks');
 	
 	const convertTime = (timestamp) => {
-		
+		if (timestamp == 0){
+			return ' - '
+		}
 		let date = new Date( timestamp * 1000);
 		let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 		let tanggal = date.getDay();
@@ -97,7 +100,9 @@ $(document).ready(function(){
    					success : function(barang)
    					{
 						let tanggal_pinjam = convertTime(result.tanggal_pinjam)
-
+						let tanggal_kembali = convertTime(result.tanggal_kembali)
+			
+						$('.modal-footer button[type=button]').css('display', 'none')
    						$('#modalDetailPeminjam div.modal-body').html(
 		   					`<ul class="list-group list-group-flush">
 				              <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
@@ -105,11 +110,8 @@ $(document).ready(function(){
 				              <li class="list-group-item">Nama Barang : ` + barang.nama + `</li>
 				              <li class="list-group-item">Jumlah Barang : ` + result.jumlah + `</li>
 				              <li class="list-group-item">Tanggal Pinjam : ` + tanggal_pinjam + `</li>
-				              <li class="list-group-item">Tanggal Kembali : ` + '-' + `</li>
-				              <li class="list-group-item">Status : 
-				              	<input type="text" name="status" class="form-control text-center" value="` + result.status_peminjaman + `">
-				              	<input type="hidden" name="idPeminjaman" value="` + idPeminjaman + `">
-				              </li>
+				              <li class="list-group-item">Tanggal Kembali : ` + tanggal_kembali + `</li>
+				              <li class="list-group-item">Status : ` + result.status_peminjaman + ` </li>
 				            </ul>`
 			            )
 

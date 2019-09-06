@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Sep 2019 pada 14.41
+-- Waktu pembuatan: 06 Sep 2019 pada 19.22
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -43,7 +43,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `alamat`, `id_level`, `gambar`) VALUES
-(2019080200, 'adityarachman_', 'aditya123', 'Aqshalzakki', 'Jl.Cicadas', 1, 'Koala.jpg');
+(2019080200, 'adityarachman_', 'aditya123', 'Aqshalzakki', 'Jl.Cicadas', 1, 'Koala.jpg'),
+(2019080201, 'Admin', 'admin123', 'Admin 1', 'Jl.Gagak', 1, 'default.png');
 
 -- --------------------------------------------------------
 
@@ -68,8 +69,8 @@ CREATE TABLE `inventaris` (
 --
 
 INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
-(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 50, 3, 1567341165, 1000001, 2019080200),
-(3, 'Ganja', 'Aman boss', '', 60, 4, 1567521127, 10000896, 2019080200);
+(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 170, 3, 1567341165, 1000001, 2019080200),
+(3, 'Ganja', 'Aman boss', '', 100, 4, 1567521127, 10000896, 2019080200);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `nip`, `alamat`, `gambar`, `id_level`) VALUES
-(1, 'Maysomething2', 'Shw12@sch.id', '123', '928128326', 'Jl.Padasuka', 'Lighthouse.jpg', 3);
+(1, 'Maysomething2', 'Shw12@sch.id', '123', '928128326', 'Jl.Padasuka', 'Lighthouse.jpg', 3),
+(2, 'Pegawai 1', 'pegawai', '123', '098376473', 'Jl.gagak', 'default.png', 3);
 
 -- --------------------------------------------------------
 
@@ -157,8 +159,9 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
-(2, 50, 1567771979, 0, 'SELESAI', 1, 1000001),
-(3, 100, 1567773521, 0, 'DIPINJAM', 1, 10000896);
+(6, 20, 1567789896, 1567790454, 'SELESAI', 1, 1000001),
+(7, 50, 1567789907, 1567789965, 'SELESAI', 1, 10000896),
+(8, 100, 1567789934, 1567789957, 'SELESAI', 1, 1000001);
 
 -- --------------------------------------------------------
 
@@ -293,7 +296,7 @@ ALTER TABLE `user_submenu`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080201;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080202;
 
 --
 -- AUTO_INCREMENT untuk tabel `inventaris`
@@ -317,13 +320,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`

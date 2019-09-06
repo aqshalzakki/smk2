@@ -138,4 +138,11 @@
             redirect('Forbidden');
         }
     }
+
+    function cek_tgl_pengembalian($waktu)
+    {
+        if ($waktu == 0) return '-';
+
+        return date('d F Y', $waktu);
+    }
 ?>

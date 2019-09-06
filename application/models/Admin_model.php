@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_model extends CI_Model
 {
+    public function getPeminjaman()
+    {
+        return $this->db->get('peminjaman')->result_array();
+    }
+
+    // method hapus peminjaman 
+    public function hapus_peminjaman_by_id($id)
+    {
+        $this->db->delete('peminjaman', ['id_peminjaman' => $id]);
+        message('Data peminjam berhasil dihapus!', 'success', 'admin/peminjaman');
+    }
+
     public function getBarang()
     {
         return $this->db->order_by('id_inventaris')->get('inventaris')->result_array();
@@ -154,5 +166,46 @@ class Admin_model extends CI_Model
         }
 
 
+    }
+
+    // METHOD KONFIRMASI PENGEMBALIAN BARANG 
+    public function konfirmasi_pengembalian_barang($id_peminjaman)
+    {
+        $data_peminjaman = $this->db->get_where('peminjaman', ['id_peminjaman' => $id_peminjaman])->row_array();
+        
+        // pertama cek apakah id/hasil peminjaman ada di database 
+        if ($data_peminjaman)
+        {
+            // pada tabel peminjaman: status peminjaman, tgl kembali akan berubah
+            $tgl_kembali = time();
+            $status = "SELESAI";
+
+            // lalu update 
+            $this->db->set('tanggal_kembali', $tgl_kembali);
+            $this->db->set('status_peminjaman', $status);
+            $this->db->where('id_peminjaman', $id_peminjaman);
+            $this->db->update('peminjaman'); 
+
+            // query ke tabel inventaris untuk mengetahui stok barang terlebih dahulu 
+            $kode_inventaris = $data_peminjaman['kode_inventaris'];
+            
+            $stok_barang = $this->db->get_where('inventaris', ['kode_inventaris' => $kode_inventaris])->row_array()['jumlah'];
+            
+            
+            // pada tabel inventaris : stok akan bertambah kembali seperti semula 
+            $jumlah_dipinjam = $data_peminjaman['jumlah'];
+            $stok_barang += $jumlah_dipinjam;
+
+            // lalu update ke tabel inventaris
+
+            $this->db->set('jumlah', $stok_barang);
+            $this->db->where('kode_inventaris', $kode_inventaris);
+            $this->db->update('inventaris');
+
+            // feedback 
+            message('Konfirmasi pengembalian barang berhasil!', 'success', 'admin/pengembalian');
+        }else{
+            redirect('admin/pengembalian');
+        }
     }
 }

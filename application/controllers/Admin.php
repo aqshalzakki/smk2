@@ -170,15 +170,22 @@ class Admin extends CI_Controller {
 	
 	
 	// -----------------
-	
+	// METHOD HAPUS DATA PEMINJAMAN 
+	public function hapus_peminjaman($id_peminjaman)
+	{
+		admin_logged_in();
+
+		$this->admin->hapus_peminjaman_by_id($id_peminjaman);
+	}
 	
 	// METHOD PENGEMBALIAN
 	public function pengembalian()
 	{
 		admin_logged_in();
-
+		
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);		
-	
+		$data['peminjaman'] = $this->admin->getPeminjaman();
+		
 		$data['judul'] = 'Pengembalian Barang';
 		view([
 			'templates/header',
@@ -189,6 +196,16 @@ class Admin extends CI_Controller {
 		], $data);
 	}
 	
+	// METHOD KONFIRMASI PENGEMBALIAN 
+	public function konfirmasi_pengembalian($id_peminjaman = null)
+	{
+		if (!$id_peminjaman) redirect('admin/pengembalian');
+		admin_logged_in();
+		
+		$this->admin->konfirmasi_pengembalian_barang($id_peminjaman);
+	}
+	
+
 	// METHOD PEGAWAI
 	public function pegawai()
 	{
@@ -233,24 +250,6 @@ class Admin extends CI_Controller {
 			'smk2/detail-pegawai',
 			'templates/footer'
 		], $data);
-	}
-
-
-	public function ruang()
-	{
-		admin_logged_in();
-		
-		$data = array (
-			'judul' => 'Inventaris - SMKN 2 BDG',
-			'data_ruang' => $this->admin->getRuang(),
-		);
-
-		$this->load->view('templates/header',$data);
-		$this->load->view('templates/sidebar',$data);
-		$this->load->view('templates/topbar',$data);
-		$this->load->view('smk2/ruang');
-		$this->load->view('templates/footer');
-		// $this->load->view('smk2/index',$data);
 	}
 
 	public function profile()
