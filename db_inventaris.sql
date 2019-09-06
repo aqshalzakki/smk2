@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2019 at 02:16 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Waktu pembuatan: 06 Sep 2019 pada 14.41
+-- Versi server: 10.1.35-MariaDB
+-- Versi PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -39,16 +39,16 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `alamat`, `id_level`, `gambar`) VALUES
-(2019080200, 'adityarachman_', 'aditya123', 'Hayyooo', 'Jl.Cicadas', 1, 'Koala.jpg');
+(2019080200, 'adityarachman_', 'aditya123', 'Aqshalzakki', 'Jl.Cicadas', 1, 'Koala.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inventaris`
+-- Struktur dari tabel `inventaris`
 --
 
 CREATE TABLE `inventaris` (
@@ -64,16 +64,17 @@ CREATE TABLE `inventaris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `inventaris`
+-- Dumping data untuk tabel `inventaris`
 --
 
 INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
-(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 50, 3, 1567341165, 1000001, 2019080200);
+(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 50, 3, 1567341165, 1000001, 2019080200),
+(3, 'Ganja', 'Aman boss', '', 60, 4, 1567521127, 10000896, 2019080200);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis`
+-- Struktur dari tabel `jenis`
 --
 
 CREATE TABLE `jenis` (
@@ -82,7 +83,7 @@ CREATE TABLE `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jenis`
+-- Dumping data untuk tabel `jenis`
 --
 
 INSERT INTO `jenis` (`id_jenis`, `nama_jenis`) VALUES
@@ -94,7 +95,7 @@ INSERT INTO `jenis` (`id_jenis`, `nama_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `level`
+-- Struktur dari tabel `level`
 --
 
 CREATE TABLE `level` (
@@ -103,7 +104,7 @@ CREATE TABLE `level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `level`
+-- Dumping data untuk tabel `level`
 --
 
 INSERT INTO `level` (`id_level`, `nama_level`) VALUES
@@ -114,7 +115,7 @@ INSERT INTO `level` (`id_level`, `nama_level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -129,7 +130,7 @@ CREATE TABLE `pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `nip`, `alamat`, `gambar`, `id_level`) VALUES
@@ -138,30 +139,31 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `ni
 -- --------------------------------------------------------
 
 --
--- Table structure for table `peminjaman`
+-- Struktur dari tabel `peminjaman`
 --
 
 CREATE TABLE `peminjaman` (
   `id_peminjaman` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `tanggal_pinjam` int(11) NOT NULL,
-  `tanggal_kembali` int(11) NOT NULL,
+  `tanggal_kembali` int(11) DEFAULT NULL,
   `status_peminjaman` varchar(128) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `peminjaman`
+-- Dumping data untuk tabel `peminjaman`
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
-(2, 50, 0, 0, 'DIPINJAM', 1, 1000001);
+(2, 50, 1567771979, 0, 'SELESAI', 1, 1000001),
+(3, 100, 1567773521, 0, 'DIPINJAM', 1, 10000896);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access_menu`
+-- Struktur dari tabel `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -171,7 +173,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_access_menu`
+-- Dumping data untuk tabel `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `id_menu`, `id_level`) VALUES
@@ -182,7 +184,7 @@ INSERT INTO `user_access_menu` (`id`, `id_menu`, `id_level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_menu`
+-- Struktur dari tabel `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -191,7 +193,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_menu`
+-- Dumping data untuk tabel `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `title`) VALUES
@@ -202,7 +204,7 @@ INSERT INTO `user_menu` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_submenu`
+-- Struktur dari tabel `user_submenu`
 --
 
 CREATE TABLE `user_submenu` (
@@ -214,7 +216,7 @@ CREATE TABLE `user_submenu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_submenu`
+-- Dumping data untuk tabel `user_submenu`
 --
 
 INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
@@ -230,113 +232,113 @@ INSERT INTO `user_submenu` (`id`, `id_menu`, `submenu`, `url`, `icon`) VALUES
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `inventaris`
+-- Indeks untuk tabel `inventaris`
 --
 ALTER TABLE `inventaris`
   ADD PRIMARY KEY (`id_inventaris`);
 
 --
--- Indexes for table `jenis`
+-- Indeks untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   ADD PRIMARY KEY (`id_jenis`);
 
 --
--- Indexes for table `level`
+-- Indeks untuk tabel `level`
 --
 ALTER TABLE `level`
   ADD PRIMARY KEY (`id_level`);
 
 --
--- Indexes for table `pegawai`
+-- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id_pegawai`);
 
 --
--- Indexes for table `peminjaman`
+-- Indeks untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id_peminjaman`);
 
 --
--- Indexes for table `user_access_menu`
+-- Indeks untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_menu`
+-- Indeks untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_submenu`
+-- Indeks untuk tabel `user_submenu`
 --
 ALTER TABLE `user_submenu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080201;
 
 --
--- AUTO_INCREMENT for table `inventaris`
+-- AUTO_INCREMENT untuk tabel `inventaris`
 --
 ALTER TABLE `inventaris`
-  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `jenis`
+-- AUTO_INCREMENT untuk tabel `jenis`
 --
 ALTER TABLE `jenis`
   MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `level`
+-- AUTO_INCREMENT untuk tabel `level`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `pegawai`
+-- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `peminjaman`
+-- AUTO_INCREMENT untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
+-- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_menu`
+-- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_submenu`
+-- AUTO_INCREMENT untuk tabel `user_submenu`
 --
 ALTER TABLE `user_submenu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
