@@ -1,16 +1,3 @@
-<?php
-
-foreach ($peminjaman as $p) :
-	$query = "
-		SELECT `peminjaman`.`id_peminjaman`, `pegawai`.`nama_pegawai`, `inventaris`.`nama`, `peminjaman`.`jumlah`, `peminjaman`.`tanggal_pinjam`, `peminjaman`.`tanggal_kembali`, `peminjaman`.`status_peminjaman`
-		FROM `peminjaman` 
-		JOIN `pegawai` ON `peminjaman`.`id_pegawai` = `pegawai`.`id_pegawai`
-		JOIN `inventaris` ON `peminjaman`.`kode_inventaris` = `inventaris`.`kode_inventaris`
-	";
-	$data = $this->db->query($query)->result_array();
-endforeach;
-?>
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

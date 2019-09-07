@@ -183,8 +183,8 @@ class Admin extends CI_Controller {
 	{
 		admin_logged_in();
 		
-		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);		
-		$data['peminjaman'] = $this->admin->getPeminjaman();
+		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
+		$data['data'] = $this->admin->getPeminjamanJoin();
 		
 		$data['judul'] = 'Pengembalian Barang';
 		view([

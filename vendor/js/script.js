@@ -6,8 +6,9 @@ $(document).ready(function(){
 			return ' - '
 		}
 		let date = new Date( timestamp * 1000);
+		
 		let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-		let tanggal = date.getDay();
+		let tanggal = date.getDate();
 		let bulan = months[date.getMonth()];
 		let tahun = date.getFullYear();
 		

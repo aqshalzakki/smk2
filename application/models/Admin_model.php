@@ -168,6 +168,23 @@ class Admin_model extends CI_Model
 
     }
 
+    // METHOD UNTUK JOIN 3 TABEL (PEMINJAMAN,PEGAWAI,INVENTARIS) 
+    public function getPeminjamanJoin()
+    {
+        $peminjaman = $this->getPeminjaman();
+
+        foreach ($peminjaman as $p) :
+            $query = "
+		SELECT `peminjaman`.`id_peminjaman`, `pegawai`.`nama_pegawai`, `inventaris`.`nama`, `peminjaman`.`jumlah`, `peminjaman`.`tanggal_pinjam`, `peminjaman`.`tanggal_kembali`, `peminjaman`.`status_peminjaman`
+		FROM `peminjaman` 
+		JOIN `pegawai` ON `peminjaman`.`id_pegawai` = `pegawai`.`id_pegawai`
+		JOIN `inventaris` ON `peminjaman`.`kode_inventaris` = `inventaris`.`kode_inventaris`
+	";
+            $data = $this->db->query($query)->result_array();
+        endforeach;
+        return $data;
+    }
+
     // METHOD KONFIRMASI PENGEMBALIAN BARANG 
     public function konfirmasi_pengembalian_barang($id_peminjaman)
     {
