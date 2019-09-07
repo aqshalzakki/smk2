@@ -329,5 +329,9 @@ class Admin extends CI_Controller {
 
 	}
 
-
+	// GENERATE LAPORAN 
+	public function generate($tabel)
+	{
+		$this->admin->generate_laporan($tabel);
+	}
 }

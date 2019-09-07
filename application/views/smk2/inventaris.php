@@ -36,6 +36,16 @@
                         </span>
                     </a>
                 </div>
+                
+                <!-- GENERATE LAPORAN INVENTARIS  -->
+                <div class="btn float-right">
+                    <a href="<?= base_url('admin/generate/inventaris'); ?>" class="btn btn-success right">
+                        <span>
+                            <i class="fas fa-file-archive"> </i>
+                            Generate laporan
+                        </span>
+                    </a>
+                </div>
             <?php endif; ?>
 
             <table id="td_barang" class="table table-hover table-striped table-bordered text-center">
