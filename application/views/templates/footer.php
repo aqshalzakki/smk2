@@ -32,7 +32,7 @@
         </div>
         <div class="modal-footer">
           <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Keluar</a>
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">batal</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
         </div>
       </div>
     </div>
@@ -133,15 +133,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="<?= base_url('admin/status_peminjam'); ?>" method="post">
-          <div class="modal-body">
+        <div class="modal-body">
 
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">OK</button>
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          </div>
-        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
       </div>
     </div>
   </div>

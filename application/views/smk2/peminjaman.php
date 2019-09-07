@@ -61,11 +61,15 @@
 
                                 <li class="list-group-item" data-id="<?= $p['id_peminjaman']; ?>" data-nama="<?= $nama; ?>" data-toggle="modal" data-target="#modalDetailPeminjam"><?= $nama; ?>
 
-                                    <div class="btn-group float-right">
-                                        <a href="<?= base_url('admin/hapus_peminjaman/' . $p['id_peminjaman']); ?>" class="btn btn-danger text-white" data-toggle="tooltip" data-placement="bottom" title="Konfirmasi?" data-original-title="hapus?">
+                                    <!-- Jika Peminjaman selesai maka tombol hapus akan ditampilkan -->
+                                    <?php if(strtoupper($p['status_peminjaman']) == 'SELESAI') : ?>
+                                        
+                                        <a href="<?= base_url('admin/hapus_peminjaman/' . $p['id_peminjaman']); ?>" class="btn btn-danger text-white float-right" title="Hapus?">
                                             <i class="fas fa-fw fa-trash-alt"></i>
                                         </a>
-                                    </div>
+
+                                    <?php endif; ?>
+
                                 </li>
 
                             <?php endforeach; ?>
@@ -88,26 +92,5 @@
 </div>
 <!-- /.container-fluid -->
 
-<!-- Modal Detail Peminjam -->
-<div class="modal fade modalDetailPeminjam" id="detailPeminjam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
 </div>
-
-</div>
-<!-- End of Main Content -->
+<!-- End of Main Content
