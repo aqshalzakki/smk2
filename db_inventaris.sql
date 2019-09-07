@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Sep 2019 pada 19.22
+-- Waktu pembuatan: 07 Sep 2019 pada 08.39
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -69,8 +69,8 @@ CREATE TABLE `inventaris` (
 --
 
 INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
-(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 170, 3, 1567341165, 1000001, 2019080200),
-(3, 'Ganja', 'Aman boss', '', 100, 4, 1567521127, 10000896, 2019080200);
+(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 100, 3, 1567341165, 1000001, 2019080200),
+(3, 'Bola basket', 'Baru', 'Bola basket untuk ekstrakulikuler basket', 100, 2, 1567521127, 10000896, 2019080200);
 
 -- --------------------------------------------------------
 
@@ -159,9 +159,9 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
-(6, 20, 1567789896, 1567790454, 'SELESAI', 1, 1000001),
-(7, 50, 1567789907, 1567789965, 'SELESAI', 1, 10000896),
-(8, 100, 1567789934, 1567789957, 'SELESAI', 1, 1000001);
+(6, 20, 1567789896, 1567837558, 'SELESAI', 1, 1000001),
+(7, 50, 1567837719, 1567837822, 'SELESAI', 1, 10000896),
+(8, 40, 1567837743, 1567837815, 'SELESAI', 1, 1000001);
 
 -- --------------------------------------------------------
 
