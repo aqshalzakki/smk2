@@ -34,7 +34,7 @@
 
         $string = '';
 
-        for ($i=0; $i < $length; $i++) { 
+        for ($i=0; $i < (int) $length; $i++) { 
             
             $pos = rand(0, strlen($karakter) - 1);
 
@@ -121,7 +121,7 @@
         
         if ($ci->session->userdata('user')['id_level'] != 1) {
             
-            redirect('Forbidden');
+            redirect('forbidden');
         }
     }
     
@@ -135,7 +135,7 @@
 
         if ($ci->session->userdata('user')['id_level'] != 3) {
 
-            redirect('Forbidden');
+            redirect('forbidden');
         }
     }
 
