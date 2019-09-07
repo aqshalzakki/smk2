@@ -46,12 +46,23 @@
                 <p class="mt-4"><span class="text-success">*</span> Untuk Kode Barang silahkan Anda lihat dihalaman Inventaris</p>
             </div>
 
-        <?php else : ?>
-
-            <!-- Jika levelnya ADMIN maka tabel ini AKAN ditampilkan -->
+        <!-- Jika levelnya ADMIN maka tabel ini AKAN ditampilkan -->
+            <?php else : ?>
+            
             <div class="col-md-6">
                 <?php if ($peminjam) : ?>
-                    <?= $this->session->flashdata('message'); ?>
+                <?= $this->session->flashdata('message'); ?>
+                
+                <!-- TOMBOL GENERATE LAPORAN PEMINJAMAN -->
+                <div class="btn">
+                    <a href="<?= base_url('admin/generate/peminjaman'); ?>" class="btn btn-success right">
+                        <span>
+                            <i class="fas fa-file-archive"> </i>
+                            Generate laporan
+                        </span>
+                    </a>
+                </div>
+
                     <div class="card list-peminjam" style="width: 18rem;">
                         <ul class="list-group list-group-flush">
 
