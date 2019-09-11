@@ -75,7 +75,7 @@ class Admin_model extends CI_Model
                 $gambar_lama = $admin['gambar'];
 
                 // jika gambar lamanya bukan gambar default 
-                if ($gambar_lama != 'default.png') {
+                if ($gambar_lama  != 'default.png') {
                     // hapus gambar sebelumnya kecuali gambar default
                     unlink(FCPATH . 'vendor/img/' . $gambar_lama);
                 }
@@ -179,7 +179,7 @@ class Admin_model extends CI_Model
     {
         $peminjaman = $this->getPeminjaman();
 
-        foreach ($peminjaman as $p) :
+        for ($i = 0; $i < count($peminjaman); $i++) :
             $query = "
 		SELECT `peminjaman`.`id_peminjaman`, `pegawai`.`nama_pegawai`, `inventaris`.`nama`, `peminjaman`.`jumlah`, `peminjaman`.`tanggal_pinjam`, `peminjaman`.`tanggal_kembali`, `peminjaman`.`status_peminjaman`
 		FROM `peminjaman` 
@@ -187,7 +187,7 @@ class Admin_model extends CI_Model
 		JOIN `inventaris` ON `peminjaman`.`kode_inventaris` = `inventaris`.`kode_inventaris`
 	";
             $data = $this->db->query($query)->result_array();
-        endforeach;
+        endfor;
         return $data;
     }
 
@@ -262,7 +262,7 @@ class Admin_model extends CI_Model
                     ->setCellValue('E' . $kolom, $barang['jumlah'])
                     ->setCellValue('F' . $kolom, date('d F Y ',$barang['tanggal_register']))
                     ->setCellValue('G' . $kolom, $barang['keterangan']);
-
+                
                 $kolom++;
                 $nomor++;
                 

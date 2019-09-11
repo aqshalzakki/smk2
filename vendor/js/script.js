@@ -1,22 +1,7 @@
 $(document).ready(function(){
 	
-	const convertTime = (timestamp) => {
-		if (timestamp == 0){
-			return ' - '
-		}
-		let date = new Date( timestamp * 1000);
-		
-		let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-		let tanggal = date.getDate();
-		let bulan = months[date.getMonth()];
-		let tahun = date.getFullYear();
-		
-		let tanggal_pinjam = tanggal + ' ' + bulan + ' ' +tahun
-		
-		return tanggal_pinjam;
-	}
-
-    $('.input-gambar-pegawai').change(function(){
+	
+	$('.input-gambar-pegawai').change(function(){
 
         let fileName = $(this).val().split('\\').pop()
         $(this).next('.custom-file-label').addClass('selected').html(fileName)
@@ -77,8 +62,24 @@ $(document).ready(function(){
    		let idPeminjaman = $(this).data('id')
 
    		let namaPeminjam = $(this).data('nama')
-
+		   
    		let baseUrl = 'http://localhost/smk2/pegawai/'
+		   
+		   const convertTime = (timestamp) => {
+			   if (timestamp == 0){
+				   return ' - '
+			   }
+			   let date = new Date( timestamp * 1000);
+			   
+			   let months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+			   let tanggal = date.getDate();
+			   let bulan = months[date.getMonth()];
+			   let tahun = date.getFullYear();
+			   
+			   let tanggal_pinjam = tanggal + ' ' + bulan + ' ' + tahun
+
+			   return tanggal_pinjam;
+		   }
 
    		$.ajax({
    			url : baseUrl + 'detailPeminjam',
@@ -99,20 +100,20 @@ $(document).ready(function(){
    					dataType : 'json',
    					success : function(barang)
    					{
-						let tanggal_pinjam = convertTime(result.tanggal_pinjam)
-						let tanggal_kembali = convertTime(result.tanggal_kembali)
-			
-						$('.modal-footer button[type=button]').css('display', 'none')
+						   let tanggal_pinjam = convertTime(result.tanggal_pinjam)
+						   let tanggal_kembali = convertTime(result.tanggal_kembali)
+						   
+						   $('.modal-footer button[type=button]').css('display', 'none')
    						$('#modalDetailPeminjam div.modal-body').html(
 		   					`<ul class="list-group list-group-flush">
-				              <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
+							   <li class="list-group-item">Nama Peminjam : ` + namaPeminjam + `</li>
 				              <li class="list-group-item">Kode Barang : ` + result.kode_inventaris + `</li>
 				              <li class="list-group-item">Nama Barang : ` + barang.nama + `</li>
 				              <li class="list-group-item">Jumlah Barang : ` + result.jumlah + `</li>
 				              <li class="list-group-item">Tanggal Pinjam : ` + tanggal_pinjam + `</li>
 				              <li class="list-group-item">Tanggal Kembali : ` + tanggal_kembali + `</li>
 				              <li class="list-group-item">Status : ` + result.status_peminjaman + ` </li>
-				            </ul>`
+							  </ul>`
 			            )
 
    					}

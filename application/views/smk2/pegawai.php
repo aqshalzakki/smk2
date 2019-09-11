@@ -34,7 +34,7 @@
                     <?php if ($level == 'admin') : ?>
 
                 <th>Aksi</th>
-
+                
                     <?php endif; ?>
 
                 </tr>
