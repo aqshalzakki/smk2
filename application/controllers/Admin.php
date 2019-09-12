@@ -332,6 +332,21 @@ class Admin extends CI_Controller {
 	// GENERATE LAPORAN 
 	public function generate($tabel)
 	{
-		$this->admin->generate_laporan($tabel);
+		// waktu pembuatan laporan 
+		$data['waktu'] = date('d F Y');
+		
+		// jika tabel laporannya peminjaman 
+		if ($tabel == 'peminjaman') :
+
+			$data['peminjaman'] = $this->admin->getPeminjamanJoin();
+			$this->load->view('generate/peminjaman', $data);
+
+		// jika tabel laporannya inventaris
+		elseif ($tabel == 'inventaris') :
+
+			$data['inventaris'] = $this->admin->getBarang();
+			$this->load->view('generate/inventaris', $data);
+		
+		endif;
 	}
 }
