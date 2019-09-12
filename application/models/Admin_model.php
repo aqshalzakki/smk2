@@ -1,12 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require('./application/third_party/phpoffice/vendor/autoload.php');
-
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
-
 class Admin_model extends CI_Model
 {
     public function getPeminjaman()
