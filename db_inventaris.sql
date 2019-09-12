@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Sep 2019 pada 08.39
+-- Waktu pembuatan: 12 Sep 2019 pada 04.28
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -44,7 +44,8 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_admin`, `alamat`, `id_level`, `gambar`) VALUES
 (2019080200, 'adityarachman_', 'aditya123', 'Aqshalzakki', 'Jl.Cicadas', 1, 'Koala.jpg'),
-(2019080201, 'Admin', 'admin123', 'Admin 1', 'Jl.Gagak', 1, 'default.png');
+(2019080201, 'Admin', 'admin123', 'Admin 1', 'Jl.Gagak', 1, '20160229_1149391111.jpg'),
+(2019080202, 'kaylakim', 'kaylasaf', 'kayla kim', 'seoul, south korea', 1, 'kay.jpg');
 
 -- --------------------------------------------------------
 
@@ -69,8 +70,7 @@ CREATE TABLE `inventaris` (
 --
 
 INSERT INTO `inventaris` (`id_inventaris`, `nama`, `kondisi`, `keterangan`, `jumlah`, `id_jenis`, `tanggal_register`, `kode_inventaris`, `id_admin`) VALUES
-(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 100, 3, 1567341165, 1000001, 2019080200),
-(3, 'Bola basket', 'Baru', 'Bola basket untuk ekstrakulikuler basket', 100, 2, 1567521127, 10000896, 2019080200);
+(2, 'Spidol Snowman', 'Baru', 'Spidol Snowman Permanen warna hitam 100pc ', 101, 3, 1567341165, 1000001, 2019080201);
 
 -- --------------------------------------------------------
 
@@ -135,7 +135,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `nip`, `alamat`, `gambar`, `id_level`) VALUES
-(1, 'Maysomething2', 'Shw12@sch.id', '123', '928128326', 'Jl.Padasuka', 'Lighthouse.jpg', 3),
+(1, 'Maysomething2', 'Shw12@sch.id', '123', '928128326', 'Jl.Padasuka', 'Koala.jpg', 3),
 (2, 'Pegawai 1', 'pegawai', '123', '098376473', 'Jl.gagak', 'default.png', 3);
 
 -- --------------------------------------------------------
@@ -153,15 +153,6 @@ CREATE TABLE `peminjaman` (
   `id_pegawai` int(11) NOT NULL,
   `kode_inventaris` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `peminjaman`
---
-
-INSERT INTO `peminjaman` (`id_peminjaman`, `jumlah`, `tanggal_pinjam`, `tanggal_kembali`, `status_peminjaman`, `id_pegawai`, `kode_inventaris`) VALUES
-(6, 20, 1567789896, 1567837558, 'SELESAI', 1, 1000001),
-(7, 50, 1567837719, 1567837822, 'SELESAI', 1, 10000896),
-(8, 40, 1567837743, 1567837815, 'SELESAI', 1, 1000001);
 
 -- --------------------------------------------------------
 
@@ -296,13 +287,13 @@ ALTER TABLE `user_submenu`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080202;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2019080203;
 
 --
 -- AUTO_INCREMENT untuk tabel `inventaris`
 --
 ALTER TABLE `inventaris`
-  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_inventaris` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`
@@ -326,7 +317,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_peminjaman` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
