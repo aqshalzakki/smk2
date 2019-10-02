@@ -27,9 +27,9 @@ class Admin_model extends CI_Model
     {
         return $this->db->order_by('id_pegawai','DESC')->get('pegawai')->result_array();
     }
-    public function getDetailPegawai($data)
+    public function getDetailPegawai($nip)
     {
-        return $this->db->get_where('pegawai', ['id_pegawai' => $data])->row_array();
+        return $this->db->get_where('pegawai', ['nip' => $nip])->row_array();
     }
     public function getJenisById($id_jenis)
     {
@@ -172,6 +172,8 @@ class Admin_model extends CI_Model
     public function getPeminjamanJoin()
     {
         $peminjaman = $this->getPeminjaman();
+        
+        if (!$peminjaman) return null;
 
         for ($i = 0; $i < count($peminjaman); $i++) :
             $query = "

@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 ">
 			<?= $this->session->flashdata('message'); ?>
-			<?php if (isset($data)) : ?>
+			<?php if ($data) : ?>
 				<table class="mt-3 text-center table table-bordered table-hovered table-stripped">
 					<thead>
 						<tr>

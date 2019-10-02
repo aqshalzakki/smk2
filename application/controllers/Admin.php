@@ -17,7 +17,6 @@ class Admin extends CI_Controller {
 		
 		$data['judul'] = 'Dashboard';
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
-
 		$data['nama_user'] = $data['user']['nama_admin'];
 
 		view([
@@ -230,17 +229,17 @@ class Admin extends CI_Controller {
 	}
 
 	// METHOD DETAIL PEGAWAI
-	public function detail_pegawai($id_pegawai = null , $id_level = null)
+	public function detail_pegawai($nip = null , $id_level = null)
 	{
 		admin_logged_in();
 
-		if (!$id_pegawai OR !$id_level OR !$this->db->get_where('pegawai', ['id_pegawai' => $id_pegawai]) OR !$this->db->get_where('level', ['id_level' => $id_level])){
+		if (!$nip OR !$this->db->get_where('pegawai', ['nip' => $nip])){
 			redirect('admin/pegawai');
 		}
 
 		$data['user'] = $this->admin->getAdminById($this->session->userdata('user')['id_admin']);
 		$data['judul'] = 'Detail Pegawai';
-		$data['pegawai'] = $this->admin->getDetailPegawai($id_pegawai);
+		$data['pegawai'] = $this->admin->getDetailPegawai($nip);
 		$data['level'] = strtolower($this->session->userdata('user')['nama_level']);
 
 		view([

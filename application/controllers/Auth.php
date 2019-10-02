@@ -25,8 +25,13 @@ class Auth extends CI_Controller {
             'judul' => 'Login'
         ];
 
-        $this->form_validation->set_rules('username','username','trim|required', ['required' => 'Username tidak boleh kosong']);
-        $this->form_validation->set_rules('password','password','trim|required', ['required' => 'Password tidak boleh kosong']);
+        $this->form_validation->set_rules('username','','trim|required', [
+            'required' => 'Username tidak boleh kosong'
+        ]);
+        
+        $this->form_validation->set_rules('password','','trim|required', [
+            'required' => 'Password tidak boleh kosong'
+        ]);
 
         if ($this->form_validation->run() == true )  
         {

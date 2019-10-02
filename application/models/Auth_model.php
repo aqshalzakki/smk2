@@ -38,9 +38,11 @@ class Auth_model extends CI_Model
         {
 
             $data_admin = $this->db->get_where('admin', ['username' => $username])->row_array();
-
+            
+            // jika ada data admin 
             if($data_admin)
             {
+                // cek password 
                 if ($password == $data_admin['password']) 
                 {
                     
@@ -50,7 +52,7 @@ class Auth_model extends CI_Model
                         'nama_level' => $this->db->get_where('level', ['id_level' => $data_admin['id_level']])->row_array()['nama_level'],
                         'nama' => $data_admin['nama_admin']
                     ];
-                    
+
                     $this->session->set_userdata('user', $data);
 
                     redirect('admin');

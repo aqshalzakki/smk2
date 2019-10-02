@@ -10,7 +10,7 @@
                 <span> Pegawai </span>
             </a>
                 <span>/</span>
-            <a href="<?= base_url('admin/detail_pegawai/' . $pegawai['id_pegawai']); ?>">
+            <a href="<?= base_url('admin/detail_pegawai/' . $pegawai['nip']); ?>">
                 <span> Detail Pegawai </span>
             </a>
         </li>

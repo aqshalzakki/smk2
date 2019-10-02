@@ -52,7 +52,7 @@
 
                             <td>
                                 <div class="btn-group">
-                                    <a href="<?= base_url('admin/detail_pegawai/' . $p['id_pegawai']) . '/' . $p['id_level']; ?>" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">
+                                    <a href="<?= base_url('admin/detail_pegawai/' . $p['nip']); ?>" class="btn btn-primary text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail">
                                         <i class="fas fa-fw fa-info-circle"></i>
                                     </a>
                                 </div>
