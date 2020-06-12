@@ -5,10 +5,8 @@ class Auth extends CI_Controller {
 
     public function __construct()
     {
-
         parent::__construct();
         $this->load->model('Auth_model', 'auth');
-
     }
 
     public function index()
@@ -22,7 +20,7 @@ class Auth extends CI_Controller {
 
 
         $data = [
-            'judul' => 'Login'
+            'judul' => 'Aplikasi Inventaris SMKN2 Bandung'
         ];
 
         $this->form_validation->set_rules('username','','trim|required', [

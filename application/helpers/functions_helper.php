@@ -1,5 +1,4 @@
 <?php 
-
     function message($pesan,$tipe,$url)
     {
         $ci = get_instance();
@@ -23,26 +22,6 @@
         }
 
         return null;
-
-    }
-
-
-    function random_string($length)
-    {
-
-        $karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
-
-        $string = '';
-
-        for ($i=0; $i < (int) $length; $i++) { 
-            
-            $pos = rand(0, strlen($karakter) - 1);
-
-            $string .= $karakter{$pos};
-
-        }
-
-        return $string;
 
     }
 
